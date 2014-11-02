@@ -13,10 +13,21 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
+    
+    var oba: String {
+            return userTextField.text + passwordTextField.text
+    }
 
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let currentUser: PFUser? = PFUser.currentUser()
+        if currentUser != nil {
+            self.performSegueWithIdentifier("LogInSegue", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +80,7 @@ class LoginViewController: UIViewController {
         logInWithUsername(username, password: password);
     }
     
+    // MARK: Log In
     func logInWithUsername(username: String, password: String) {
         
         // Try to log in
@@ -77,9 +89,9 @@ class LoginViewController: UIViewController {
             if user != nil {
                 self.performSegueWithIdentifier("LogInSegue", sender: self)
             } else {
-                let errorString: String! = error.localizedDescription
-                
+
                 // Present Alert
+                let errorString: String! = error.localizedDescription
                 var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
