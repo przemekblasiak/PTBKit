@@ -26,6 +26,7 @@ class PropertiesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.refreshControl?.beginRefreshing()
         self.updateProperties()
     }
 
@@ -108,6 +109,7 @@ class PropertiesTableViewController: UITableViewController {
         
         // Ask to confirm
         var alert = UIAlertController(title: "Confirm", message: "Want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default,
             handler: { (UIAlertAction action) -> Void in
                 PFUser.logOut()
@@ -119,7 +121,6 @@ class PropertiesTableViewController: UITableViewController {
                 self.navigationController?.popViewControllerAnimated(true)
             }
         ))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
@@ -130,6 +131,7 @@ class PropertiesTableViewController: UITableViewController {
     // MARK: Updating
     func updateProperties() {
         var query = PFQuery(className:"Properties")
+        query.whereKey("userId", equalTo: PFUser.currentUser())
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             

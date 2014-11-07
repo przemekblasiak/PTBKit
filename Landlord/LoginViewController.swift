@@ -42,62 +42,127 @@ class LoginViewController: UIViewController {
     
     // MARK: Button Actions
     @IBAction func signUpAction(sender: AnyObject) {
+        let (fieldsAreValid: Bool, errorString: String) = self.fieldsAreValid()
+        
+        if fieldsAreValid {
+            let username = userTextField.text,
+                password = passwordTextField.text
+            
+            // Sign up
+            self.signUpWithUsername(username, password: password)
+        } else {
+            
+            // Present alert with error message //TODO: Subclass UIAlertController
+            var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func logInAction(sender: AnyObject) {
+        let (fieldsAreValid: Bool, errorString: String) = self.fieldsAreValid()
+        
+        if fieldsAreValid {
+            let username: String = userTextField.text,
+                password: String = passwordTextField.text
+            
+            // Log in
+            self.logInWithUsername(username, password: password);
+        } else {
+            
+            // Present alert with error message
+            var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: Private
+    func logInWithUsername(username: String, password: String) {
+        
+        // Present Progress Alert
+        var progressAlert = UIAlertController(title: "Logging in...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(progressAlert, animated: true, completion: nil)
+        
+        // Try to log in
+        PFUser.logInWithUsernameInBackground(username, password:password) {
+            (user: PFUser!, error: NSError!) -> Void in
+            
+            if user != nil {
+                
+                // Dismiss Progress Alert
+                progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    // Segue to next screen
+                    self.performSegueWithIdentifier("LogInSegue", sender: self)
+                })
+            } else {
+
+                // Dismiss Progress Alert
+                progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    // Present Failure Alert
+                    let errorString: String! = error.localizedDescription
+                    var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
+            }
+        }
+    }
+    
+    func signUpWithUsername(username: String, password: String) {
         
         // Create new user
         var newUser = PFUser()
-        newUser.username = userTextField.text
-        newUser.password = passwordTextField.text
+        newUser.username = username
+        newUser.password = password
+        
+        // Present Progress Alert
+        var progressAlert = UIAlertController(title: "Signing up...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(progressAlert, animated: true, completion: nil)
         
         // Try to sign up
         newUser.signUpInBackgroundWithBlock {
             (succeeded: Bool!, error: NSError!) -> Void in
             if error == nil {
                 
-                // Show success and log in after dismiss
-                var alert = UIAlertController(title: "Success", message: "The account has been created", preferredStyle: UIAlertControllerStyle.Alert)
-                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { (action: UIAlertAction!) -> Void in
+                // Dismiss Progress Alert
+                progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    // Log in
                     self.logInWithUsername(newUser.username, password: newUser.password)
                 })
-                alert.addAction(okAction)
-                self.presentViewController(alert, animated: true, completion: nil)
             } else {
                 let errorString: String! = error.localizedDescription
                 
-                // Show failure
-                var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                // Dismiss Progress Alert
+                progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    // Show failure
+                    var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
             }
         }
     }
-    
-    @IBAction func logInAction(sender: AnyObject) {
-        
-        let username: String = userTextField.text,
-            password: String = passwordTextField.text
-        
-        // Log In
-        logInWithUsername(username, password: password);
-    }
-    
-    // MARK: Log In
-    func logInWithUsername(username: String, password: String) {
-        
-        // Try to log in
-        PFUser.logInWithUsernameInBackground(username, password:password) {
-            (user: PFUser!, error: NSError!) -> Void in
-            if user != nil {
-                self.performSegueWithIdentifier("LogInSegue", sender: self)
-            } else {
 
-                // Present Alert
-                let errorString: String! = error.localizedDescription
-                var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
+    func fieldsAreValid() -> (valid: Bool, errorString: String) {
+        
+        // Check username
+        var validationResult = self.userTextField.text.isUsernameValid()
+        if !validationResult.valid {
+            return validationResult
         }
+        
+        // Check password
+        validationResult = self.passwordTextField.text.isPasswordValid()
+        if !validationResult.valid {
+            return validationResult
+        }
+        
+        return (true, "")
     }
-    
     
 }
