@@ -13,32 +13,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
-    
-    var oba: String {
-            return userTextField.text + passwordTextField.text
-    }
 
     // MARK: Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         let currentUser: PFUser? = PFUser.currentUser()
         if currentUser != nil {
             self.performSegueWithIdentifier("LogInSegue", sender: self)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//    }
     
     // MARK: Button Actions
     @IBAction func signUpAction(sender: AnyObject) {
@@ -80,7 +62,7 @@ class LoginViewController: UIViewController {
     // MARK: Private
     func logInWithUsername(username: String, password: String) {
         
-        // Present Progress Alert
+        // Present Progress Alert //TODO: Change to real progress bar
         var progressAlert = UIAlertController(title: "Logging in...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         

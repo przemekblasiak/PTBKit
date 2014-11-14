@@ -19,10 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("C4rbjhuWyKxoV8qyyT3Xt1KD1fq9E9BuWtQz3Fsa", clientKey: "vKVZVLijNzVqcBFPgCjbLSLpmUiS5opIYh0ntiTQ")
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
         
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().translucent = true
-        
         return true;
     }
 

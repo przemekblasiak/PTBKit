@@ -21,13 +21,11 @@ class PropertiesTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.refreshControl?.beginRefreshing()
-        self.updateProperties()
+         self.updateProperties()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,35 +47,20 @@ class PropertiesTableViewController: UITableViewController {
 
         var property: PFObject = self.properties[indexPath.row]
         cell.textLabel.text = (property["address"] as String)
-        var paid: Bool = (property["paid"] as Bool)
-        if paid {
-            cell.detailTextLabel?.text = "Paid in time"
-        } else {
-            cell.detailTextLabel?.text = "Not paid yet"
-        }
 
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            // tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -118,7 +101,7 @@ class PropertiesTableViewController: UITableViewController {
                 self.properties = []
                 
                 // Go to Log In screen
-                self.navigationController?.popViewControllerAnimated(true)
+                self.performSegueWithIdentifier("LogOutSegue", sender: self)
             }
         ))
         self.presentViewController(alert, animated: true, completion: nil)
@@ -130,7 +113,7 @@ class PropertiesTableViewController: UITableViewController {
     
     // MARK: Updating
     func updateProperties() {
-        var query = PFQuery(className:"Properties")
+        var query = PFQuery(className:"Property")
         query.whereKey("userId", equalTo: PFUser.currentUser())
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
