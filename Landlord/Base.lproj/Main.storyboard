@@ -16,23 +16,23 @@
                         <rect key="frame" x="0.0" y="64" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxs-nG-KLM">
-                                <rect key="frame" x="412" y="334" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hasło" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxs-nG-KLM">
+                                <rect key="frame" x="412" y="300" width="200" height="30"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKb-dH-JYG">
-                                <rect key="frame" x="412" y="296" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Użytkownik" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKb-dH-JYG">
+                                <rect key="frame" x="412" y="262" width="200" height="30"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVj-Md-2bI">
-                                <rect key="frame" x="412" y="372" width="95" height="30"/>
+                                <rect key="frame" x="412" y="338" width="95" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Utwórz konto">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -41,10 +41,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqC-nA-3UN">
-                                <rect key="frame" x="517" y="372" width="95" height="30"/>
+                                <rect key="frame" x="517" y="338" width="95" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="Zaloguj">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -52,6 +52,30 @@
                                     <action selector="logInAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Pu-Bd-HZe"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="reH-da-PaW">
+                                <rect key="frame" x="0.0" y="416" width="1024" height="352"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Keyboard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz3-9E-u5a">
+                                        <rect key="frame" x="475" y="165" width="74" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d74-TC-qmr">
+                                <rect key="frame" x="0.0" y="376" width="1024" height="40"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Keyboard Suggestion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ii-Kw-5nW">
+                                        <rect key="frame" x="429" y="9" width="166" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -70,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="1747" y="1686"/>
         </scene>
-        <!--View Controller-->
+        <!--Property Detail View Controller-->
         <scene sceneID="Ual-vL-5Po">
             <objects>
-                <viewController id="XbN-9e-4DV" sceneMemberID="viewController">
+                <viewController id="XbN-9e-4DV" customClass="PropertyDetailViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kcx-jb-kKL"/>
                         <viewControllerLayoutGuide type="bottom" id="lwc-rF-EKv"/>
@@ -81,8 +105,19 @@
                     <view key="view" contentMode="scaleToFill" id="S6m-8A-cLm">
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPw-cS-Rlz">
+                                <rect key="frame" x="16" y="373" width="671" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="yPw-cS-Rlz" id="il1-gV-Teh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mue-NB-yYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,10 +132,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PropertyCell" id="2nZ-TN-kkm">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PropertyCell" textLabel="vtb-de-wqR" style="IBUITableViewCellStyleDefault" id="2nZ-TN-kkm">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2nZ-TN-kkm" id="hs0-hq-WNK">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Adres" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vtb-de-wqR">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -115,9 +158,17 @@
                                 <action selector="logOutAction:" destination="ArY-Ym-GmZ" id="eVn-ho-UQn"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nwL-mC-Mcb">
+                            <connections>
+                                <action selector="addAction:" destination="ArY-Ym-GmZ" id="LLq-rY-3QP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="DQe-Z9-JrK">
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshAction:" destination="ArY-Ym-GmZ" eventType="valueChanged" id="idB-2b-qzX"/>
+                        </connections>
                     </refreshControl>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="LogOutSegue" id="exr-wu-urn"/>
@@ -138,7 +189,31 @@
                     <view key="view" contentMode="scaleToFill" id="Pxf-WQ-kVg">
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moje opłaty" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLn-Jl-QIv">
+                                <rect key="frame" x="188" y="175" width="90" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FzK-KY-h4L">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Ja płacę za gaz" translatesAutoresizingMaskIntoConstraints="NO" id="OgQ-lG-8EF">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="nLn-Jl-QIv"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPa-Rn-oUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -154,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OlL-cB-4hV">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TenantCell" id="OlL-cB-4hV">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OlL-cB-4hV" id="EYY-Ic-ad7">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -166,7 +241,10 @@
                             <outlet property="delegate" destination="vc3-Wg-Gw7" id="0aK-kE-KdG"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Najemcy" id="hjs-dn-nc2"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="h7M-es-xPb">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
@@ -195,7 +273,7 @@
         <scene sceneID="32p-IV-E6c">
             <objects>
                 <splitViewController id="oHv-7A-Emf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Najemcy" id="geE-pe-itT"/>
+                    <tabBarItem key="tabBarItem" title="Najemcy" image="Tenants" id="geE-pe-itT"/>
                     <connections>
                         <segue destination="hb0-nr-VXR" kind="relationship" relationship="masterViewController" id="Jaa-UN-arK"/>
                         <segue destination="64f-c7-yaU" kind="relationship" relationship="detailViewController" id="EJb-WZ-5Qh"/>
@@ -225,7 +303,7 @@
         <scene sceneID="OKo-ii-gCi">
             <objects>
                 <splitViewController id="g8O-X3-OSG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nieruchomości" id="YVb-2K-JxM"/>
+                    <tabBarItem key="tabBarItem" title="Nieruchomości" image="House" id="YVb-2K-JxM"/>
                     <connections>
                         <segue destination="D0v-qJ-j6M" kind="relationship" relationship="masterViewController" id="A80-t8-i1a"/>
                         <segue destination="XbN-9e-4DV" kind="relationship" relationship="detailViewController" id="xU8-zx-8XF"/>
@@ -255,4 +333,8 @@
             <point key="canvasLocation" x="2831" y="1686"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="House" width="42" height="42"/>
+        <image name="Tenants" width="42" height="42"/>
+    </resources>
 </document>

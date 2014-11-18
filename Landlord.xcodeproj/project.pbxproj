@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B508EB7F1A0C4B27009075CC /* StringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B508EB7E1A0C4B27009075CC /* StringExtenstion.swift */; };
+		B508EB7F1A0C4B27009075CC /* PBStringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B508EB7E1A0C4B27009075CC /* PBStringExtenstion.swift */; };
+		B50B584A1A1AD55000998EF4 /* PBAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50B58491A1AD55000998EF4 /* PBAlertController.swift */; };
+		B50B584C1A1ADBB100998EF4 /* PBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50B584B1A1ADBB100998EF4 /* PBTableViewController.swift */; };
+		B52251901A180E03006BB1CD /* PropertyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */; };
 		B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54114E81A04FF3000A91BAD /* AppDelegate.swift */; };
 		B54114F01A04FF3000A91BAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54114EF1A04FF3000A91BAD /* Images.xcassets */; };
 		B54114F31A04FF3000A91BAD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54114F11A04FF3000A91BAD /* LaunchScreen.xib */; };
@@ -40,7 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B508EB7E1A0C4B27009075CC /* StringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtenstion.swift; sourceTree = "<group>"; };
+		B508EB7E1A0C4B27009075CC /* PBStringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBStringExtenstion.swift; sourceTree = "<group>"; };
+		B50B58491A1AD55000998EF4 /* PBAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBAlertController.swift; sourceTree = "<group>"; };
+		B50B584B1A1ADBB100998EF4 /* PBTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBTableViewController.swift; sourceTree = "<group>"; };
+		B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailViewController.swift; sourceTree = "<group>"; };
 		B54114E31A04FF3000A91BAD /* Landlord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landlord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54114E71A04FF3000A91BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54114E81A04FF3000A91BAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,9 +107,18 @@
 		B508EB801A0C4B2C009075CC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B508EB7E1A0C4B27009075CC /* StringExtenstion.swift */,
+				B508EB7E1A0C4B27009075CC /* PBStringExtenstion.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		B50B58481A1AD3F300998EF4 /* PB Framework */ = {
+			isa = PBXGroup;
+			children = (
+				B58B7EFD1A1ADBE400B04275 /* Controllers */,
+				B508EB801A0C4B2C009075CC /* Extensions */,
+			);
+			name = "PB Framework";
 			sourceTree = "<group>";
 		};
 		B54114DA1A04FF3000A91BAD = {
@@ -128,11 +143,12 @@
 		B54114E51A04FF3000A91BAD /* Landlord */ = {
 			isa = PBXGroup;
 			children = (
-				B508EB801A0C4B2C009075CC /* Extensions */,
+				B50B58481A1AD3F300998EF4 /* PB Framework */,
 				B54114E81A04FF3000A91BAD /* AppDelegate.swift */,
 				B5F995B41A06B72700E019EE /* PropertiesTableViewController.swift */,
 				B5BB6D581A0569BF0060FEB7 /* Main.storyboard */,
 				B5BB6D521A0537610060FEB7 /* LoginViewController.swift */,
+				B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */,
 				B54114EF1A04FF3000A91BAD /* Images.xcassets */,
 				B54114F11A04FF3000A91BAD /* LaunchScreen.xib */,
 				B54114E61A04FF3000A91BAD /* Supporting Files */,
@@ -163,6 +179,15 @@
 				B54114FD1A04FF3000A91BAD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B58B7EFD1A1ADBE400B04275 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B50B58491A1AD55000998EF4 /* PBAlertController.swift */,
+				B50B584B1A1ADBB100998EF4 /* PBTableViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		B5BB6D391A0502CB0060FEB7 /* Frameworks */ = {
@@ -235,6 +260,7 @@
 				TargetAttributes = {
 					B54114E21A04FF3000A91BAD = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = DVY74Z4LYU;
 					};
 					B54114F71A04FF3000A91BAD = {
 						CreatedOnToolsVersion = 6.1;
@@ -288,8 +314,11 @@
 			files = (
 				B5BB6D531A0537610060FEB7 /* LoginViewController.swift in Sources */,
 				B5F995B51A06B72700E019EE /* PropertiesTableViewController.swift in Sources */,
+				B50B584C1A1ADBB100998EF4 /* PBTableViewController.swift in Sources */,
+				B50B584A1A1AD55000998EF4 /* PBAlertController.swift in Sources */,
 				B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */,
-				B508EB7F1A0C4B27009075CC /* StringExtenstion.swift in Sources */,
+				B508EB7F1A0C4B27009075CC /* PBStringExtenstion.swift in Sources */,
+				B52251901A180E03006BB1CD /* PropertyDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +443,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -421,6 +452,7 @@
 				INFOPLIST_FILE = Landlord/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -429,6 +461,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -436,6 +470,7 @@
 				INFOPLIST_FILE = Landlord/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

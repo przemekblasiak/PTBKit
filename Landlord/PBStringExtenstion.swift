@@ -14,7 +14,7 @@ extension String {
         
         // Check if not empty
         if self.isEmpty {
-            return (false, "Enter your username")
+            return (false, "Brakuje nazwy użytkownika")
         }
         
         return (true, "")
@@ -24,7 +24,7 @@ extension String {
         
         // Check if not empty
         if self.isEmpty {
-            return (false, "Enter your password")
+            return (false, "Brakuje hasła")
         }
         
         return (true, "")

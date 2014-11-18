@@ -9,28 +9,47 @@
 import UIKit
 import Parse
 
-class PropertiesTableViewController: UITableViewController {
+class PropertiesTableViewController: PBTableViewController {
     
     // MARK: Properties
     var properties = [PFObject]()
+    var propertyTypes = Array<PFObject>()
+    var defaultPropertyType = PFObject(className: "PropertyType")
+    var detailViewController = PropertyDetailViewController()
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.detailViewController = self.splitViewController?.viewControllers[1] as PropertyDetailViewController
 
+        // Set property types
+        let typesQuery = PFQuery(className: "PropertyType")
+        typesQuery.findObjectsInBackgroundWithBlock {
+            (propertyTypes: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.propertyTypes = propertyTypes as [PFObject]
+                
+                // Set default PropertyType
+                self.defaultPropertyType = self.propertyTypes[0]
+                for (index, propertyType) in enumerate(self.propertyTypes) {
+                    if (propertyType["name"] as String == "Apartment") {
+                        self.defaultPropertyType = propertyType
+                    }
+                }
+            }
+        }
+        
+        // Select first item on the list
+        let firstItemPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.tableView.selectRowAtIndexPath(firstItemPath, animated: false, scrollPosition: .None)
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.clearsSelectionOnViewWillAppear = false
     }
     
     override func viewWillAppear(animated: Bool) {
          self.updateProperties()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -51,49 +70,52 @@ class PropertiesTableViewController: UITableViewController {
         return cell
     }
 
+    // MARK: - Table view delegate
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
             
-            // tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            // Delete
+            properties.removeAtIndex(indexPath.row).deleteInBackgroundWithBlock(nil)
+            tableView.beginUpdates()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.endUpdates()
+        }
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // Change address in Detail View
+        self.detailViewController.addressLabel.text = self.properties[indexPath.row]["address"] as String?
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
     // MARK: Actions
+    @IBAction func addAction(sender: AnyObject) {
+        
+        // Create and add new Property
+        var newProperty = PFObject(className: "Property")
+        newProperty["userId"] = PFUser.currentUser()
+        newProperty["typeId"] = self.defaultPropertyType
+        newProperty["address"] = "Nowa nieruchomość"
+        newProperty["withGarage"] = false
+        
+        // Add new Property
+        self.properties.insert(newProperty, atIndex: self.properties.count)
+        newProperty.saveInBackgroundWithBlock(nil)
+        
+        // Insert new row
+        self.tableView.beginUpdates()
+        var indexPath = NSIndexPath(forRow: self.properties.count - 1, inSection: 0)
+        self.tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        self.tableView.endUpdates()
+    }
+    
     @IBAction func logOutAction(sender: AnyObject) {
         
         // Ask to confirm
-        var alert = UIAlertController(title: "Confirm", message: "Want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default,
+        var alert = UIAlertController(title: "Potwierdzenie", message: "Chcesz się wylogować?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Tak", style: UIAlertActionStyle.Default,
             handler: { (UIAlertAction action) -> Void in
                 PFUser.logOut()
                 
@@ -129,7 +151,7 @@ class PropertiesTableViewController: UITableViewController {
                 
                 // Present Alert
                 let errorString: String! = error.localizedDescription
-                var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+                var alert = UIAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }

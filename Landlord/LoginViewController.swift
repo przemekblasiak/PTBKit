@@ -10,6 +10,8 @@ import UIKit
 import Parse
 
 class LoginViewController: UIViewController {
+    
+    // MARK: Properties
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
@@ -34,8 +36,8 @@ class LoginViewController: UIViewController {
             self.signUpWithUsername(username, password: password)
         } else {
             
-            // Present alert with error message //TODO: Subclass UIAlertController
-            var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+            // Present error alert with error message //TODO: Subclass UIAlertController
+            var alert = PBAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -53,7 +55,7 @@ class LoginViewController: UIViewController {
         } else {
             
             // Present alert with error message
-            var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = PBAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -63,7 +65,7 @@ class LoginViewController: UIViewController {
     func logInWithUsername(username: String, password: String) {
         
         // Present Progress Alert //TODO: Change to real progress bar
-        var progressAlert = UIAlertController(title: "Logging in...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        var progressAlert = PBAlertController(title: "Logowanie...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         
         // Try to log in
@@ -79,15 +81,16 @@ class LoginViewController: UIViewController {
                     self.performSegueWithIdentifier("LogInSegue", sender: self)
                 })
             } else {
-
+                let errorString: String! = error.localizedDescription
+                
                 // Dismiss Progress Alert
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
-                    // Present Failure Alert
-                    let errorString: String! = error.localizedDescription
-                    var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+                    // Show failure
+                    var alert = PBAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
+
                 })
             }
         }
@@ -101,7 +104,7 @@ class LoginViewController: UIViewController {
         newUser.password = password
         
         // Present Progress Alert
-        var progressAlert = UIAlertController(title: "Signing up...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        var progressAlert = PBAlertController(title: "Tworzenie konta...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         
         // Try to sign up
@@ -122,7 +125,7 @@ class LoginViewController: UIViewController {
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Show failure
-                    var alert = UIAlertController(title: "Failed", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+                    var alert = PBAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 })
@@ -148,3 +151,5 @@ class LoginViewController: UIViewController {
     }
     
 }
+
+//TODO: Obsłużenie kodów błędu
