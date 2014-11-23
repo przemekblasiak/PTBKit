@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B508EB7F1A0C4B27009075CC /* PBStringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B508EB7E1A0C4B27009075CC /* PBStringExtenstion.swift */; };
-		B50B584A1A1AD55000998EF4 /* PBAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50B58491A1AD55000998EF4 /* PBAlertController.swift */; };
 		B50B584C1A1ADBB100998EF4 /* PBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50B584B1A1ADBB100998EF4 /* PBTableViewController.swift */; };
+		B51FA2B81A22779E006B81C0 /* PBUIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FA2B71A22779E006B81C0 /* PBUIAlertControllerExtension.swift */; };
 		B52251901A180E03006BB1CD /* PropertyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */; };
 		B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54114E81A04FF3000A91BAD /* AppDelegate.swift */; };
 		B54114F01A04FF3000A91BAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54114EF1A04FF3000A91BAD /* Images.xcassets */; };
@@ -44,8 +44,8 @@
 
 /* Begin PBXFileReference section */
 		B508EB7E1A0C4B27009075CC /* PBStringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBStringExtenstion.swift; sourceTree = "<group>"; };
-		B50B58491A1AD55000998EF4 /* PBAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBAlertController.swift; sourceTree = "<group>"; };
 		B50B584B1A1ADBB100998EF4 /* PBTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBTableViewController.swift; sourceTree = "<group>"; };
+		B51FA2B71A22779E006B81C0 /* PBUIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBUIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailViewController.swift; sourceTree = "<group>"; };
 		B54114E31A04FF3000A91BAD /* Landlord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landlord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54114E71A04FF3000A91BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				B508EB7E1A0C4B27009075CC /* PBStringExtenstion.swift */,
+				B51FA2B71A22779E006B81C0 /* PBUIAlertControllerExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -184,7 +185,6 @@
 		B58B7EFD1A1ADBE400B04275 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B50B58491A1AD55000998EF4 /* PBAlertController.swift */,
 				B50B584B1A1ADBB100998EF4 /* PBTableViewController.swift */,
 			);
 			name = Controllers;
@@ -315,10 +315,10 @@
 				B5BB6D531A0537610060FEB7 /* LoginViewController.swift in Sources */,
 				B5F995B51A06B72700E019EE /* PropertiesTableViewController.swift in Sources */,
 				B50B584C1A1ADBB100998EF4 /* PBTableViewController.swift in Sources */,
-				B50B584A1A1AD55000998EF4 /* PBAlertController.swift in Sources */,
 				B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */,
 				B508EB7F1A0C4B27009075CC /* PBStringExtenstion.swift in Sources */,
 				B52251901A180E03006BB1CD /* PropertyDetailViewController.swift in Sources */,
+				B51FA2B81A22779E006B81C0 /* PBUIAlertControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

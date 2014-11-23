@@ -36,9 +36,8 @@ class LoginViewController: UIViewController {
             self.signUpWithUsername(username, password: password)
         } else {
             
-            // Present error alert with error message //TODO: Subclass UIAlertController
-            var alert = PBAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            // Present error alert with error message
+            var alert = UIAlertController(errorMessage: errorString)
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -55,8 +54,7 @@ class LoginViewController: UIViewController {
         } else {
             
             // Present alert with error message
-            var alert = PBAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            var alert = UIAlertController(errorMessage: errorString)
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -65,7 +63,7 @@ class LoginViewController: UIViewController {
     func logInWithUsername(username: String, password: String) {
         
         // Present Progress Alert //TODO: Change to real progress bar
-        var progressAlert = PBAlertController(title: "Logowanie...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        var progressAlert = UIAlertController(title: "Logowanie...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         
         // Try to log in
@@ -87,8 +85,7 @@ class LoginViewController: UIViewController {
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Show failure
-                    var alert = PBAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+                    var alert = UIAlertController(errorMessage: errorString)
                     self.presentViewController(alert, animated: true, completion: nil)
 
                 })
@@ -104,7 +101,7 @@ class LoginViewController: UIViewController {
         newUser.password = password
         
         // Present Progress Alert
-        var progressAlert = PBAlertController(title: "Tworzenie konta...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        var progressAlert = UIAlertController(title: "Tworzenie konta...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         
         // Try to sign up
@@ -125,8 +122,7 @@ class LoginViewController: UIViewController {
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Show failure
-                    var alert = PBAlertController(title: "Ups", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+                    var alert = UIAlertController(errorMessage: errorString)
                     self.presentViewController(alert, animated: true, completion: nil)
                 })
             }
