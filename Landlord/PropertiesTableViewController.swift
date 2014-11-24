@@ -150,7 +150,7 @@ class PropertiesTableViewController: PBTableViewController {
             } else {
                 
                 // Present Alert
-                var alert = UIAlertController(errorMessage: error.localizedDescription)
+                var alert = UIAlertController(type: .Error, code: error.code)
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         }

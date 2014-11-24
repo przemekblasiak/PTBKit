@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         } else {
             
             // Present error alert with error message
-            var alert = UIAlertController(errorMessage: errorString)
+            var alert = UIAlertController(type: .Error, message: errorString)
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
         } else {
             
             // Present alert with error message
-            var alert = UIAlertController(errorMessage: errorString)
+            var alert = UIAlertController(type: .Error, message: errorString)
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -79,13 +79,12 @@ class LoginViewController: UIViewController {
                     self.performSegueWithIdentifier("LogInSegue", sender: self)
                 })
             } else {
-                let errorString: String! = error.localizedDescription
                 
                 // Dismiss Progress Alert
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Show failure
-                    var alert = UIAlertController(errorMessage: errorString)
+                    var alert = UIAlertController(type: .Error, code: error.code)
                     self.presentViewController(alert, animated: true, completion: nil)
 
                 })
@@ -116,13 +115,12 @@ class LoginViewController: UIViewController {
                     self.logInWithUsername(newUser.username, password: newUser.password)
                 })
             } else {
-                let errorString: String! = error.localizedDescription
                 
                 // Dismiss Progress Alert
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Show failure
-                    var alert = UIAlertController(errorMessage: errorString)
+                    var alert = UIAlertController(type: .Error, code: error.code)
                     self.presentViewController(alert, animated: true, completion: nil)
                 })
             }
@@ -147,5 +145,3 @@ class LoginViewController: UIViewController {
     }
     
 }
-
-//TODO: Obsłużenie kodów błędu
