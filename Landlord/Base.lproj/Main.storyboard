@@ -152,23 +152,9 @@
                             <outlet property="delegate" destination="ArY-Ym-GmZ" id="bXv-2S-PHG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Nieruchomości" id="ebv-wD-U2S">
-                        <barButtonItem key="leftBarButtonItem" title="Wyloguj" id="gaA-S7-Xa1">
-                            <connections>
-                                <action selector="logOutAction:" destination="ArY-Ym-GmZ" id="eVn-ho-UQn"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nwL-mC-Mcb">
-                            <connections>
-                                <action selector="addAction:" destination="ArY-Ym-GmZ" id="LLq-rY-3QP"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Nieruchomości" id="ebv-wD-U2S"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="DQe-Z9-JrK">
                         <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <action selector="refreshAction:" destination="ArY-Ym-GmZ" eventType="valueChanged" id="idB-2b-qzX"/>
-                        </connections>
                     </refreshControl>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="LogOutSegue" id="exr-wu-urn"/>
@@ -223,7 +209,7 @@
         <!--Najemcy-->
         <scene sceneID="jHf-Nb-tlz">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="vc3-Wg-Gw7" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="vc3-Wg-Gw7" customClass="TenantsTableViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YOA-uF-4bE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -248,6 +234,9 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="h7M-es-xPb">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LogOutSegue" id="ty8-PU-FIt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wD1-6E-1rf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -337,4 +326,7 @@
         <image name="House" width="42" height="42"/>
         <image name="Tenants" width="42" height="42"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="exr-wu-urn"/>
+    </inferredMetricsTieBreakers>
 </document>

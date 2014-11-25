@@ -1,49 +1,29 @@
 //
-//  PropertiesTableViewController.swift
+//  TenantsTableViewController.swift
 //  Landlord
 //
-//  Created by Przemyslaw Blasiak on 02.11.2014.
+//  Created by Przemyslaw Blasiak on 24.11.2014.
 //  Copyright (c) 2014 bprzemyslaw. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class PropertiesTableViewController: PBTableViewController {
-    
-// MARK: Properties
-    var propertyTypes = [PFObject]()
+class TenantsTableViewController: PBTableViewController {
     
 // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Customize the table
-        self.itemClassName = "Property"
-        self.itemTitleColumnName = "address"
+        self.itemClassName = "Tenant"
+        self.itemTitleColumnName = "name"
         
         // Add a log out action
         let logOutSelector: Selector = Selector("logOut")
         if self.respondsToSelector(logOutSelector) {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Wyloguj", style: UIBarButtonItemStyle.Plain, target: self, action: logOutSelector)
         }
-
-        // Set property types
-        let typesQuery = PFQuery(className: "PropertyType")
-        typesQuery.findObjectsInBackgroundWithBlock {
-            (propertyTypes: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                self.propertyTypes = propertyTypes as [PFObject]
-            }
-        }
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let detailViewController: PropertyDetailViewController = self.splitViewController?.viewControllers[1] as PropertyDetailViewController
-
-        // Change address in Detail View
-        detailViewController.addressLabel.text = self.items[indexPath.row]["address"] as String?
     }
     
 // MARK: Log in/out
@@ -65,4 +45,5 @@ class PropertiesTableViewController: PBTableViewController {
             ))
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
 }

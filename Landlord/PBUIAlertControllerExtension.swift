@@ -34,6 +34,8 @@ extension UIAlertController {
         var codeDescription: String?
         if let errorCode = code {
             switch errorCode {
+            case 100:
+                codeDescription = "Brakuje połączenia z internetem."
             case 101:
                 codeDescription = "Podana nazwa użytkownika lub hasło są niepoprawne"
             case 202:
