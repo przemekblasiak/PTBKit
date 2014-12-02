@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class PropertiesTableViewController: PBTableViewController {
+class PropertiesTableViewController: PTBTableViewController {
     
 // MARK: Properties
     var propertyTypes = [PFObject]()
@@ -40,10 +40,10 @@ class PropertiesTableViewController: PBTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let detailViewController: PropertyDetailViewController = self.splitViewController?.viewControllers[1] as PropertyDetailViewController
-
-        // Change address in Detail View
-        detailViewController.addressLabel.text = self.items[indexPath.row]["address"] as String?
+        let detailViewController: PropertyDetailViewController = (self.splitViewController?.viewControllers[1] as UINavigationController).topViewController as PropertyDetailViewController
+            
+        // Set title on detail's navigation bar
+        detailViewController.navigationItem.title = self.items[indexPath.row]["address"] as String?
     }
     
 // MARK: Log in/out

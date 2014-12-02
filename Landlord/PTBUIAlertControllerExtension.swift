@@ -1,6 +1,6 @@
 
 //
-//  PBUIAlertControllerExtension.swift
+//  PTBUIAlertControllerExtension.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 23.11.2014.
@@ -32,7 +32,9 @@ extension UIAlertController {
     
     convenience init(type: UIAlertControllerType, error: NSError) {
         var codeDescription: String?
-        if (error.domain == "Parse") {
+        
+        switch error.domain {
+        case "Parse":
             switch error.code {
             case 100:
                 codeDescription = "Brakuje połączenia z internetem."
@@ -43,7 +45,7 @@ extension UIAlertController {
             default:
                 codeDescription = String(error.localizedDescription)
             }
-        } else {
+        default:
             
             // For my domain and other
             codeDescription = String(error.localizedDescription)

@@ -10,13 +10,13 @@ import Foundation
 
 extension String {
     
-    func validateUsername(errorPointer: NSErrorPointer?) -> Bool {
+    func isValidUsername(errorPointer: NSErrorPointer?) -> Bool {
         
         // Check if empty
         if self.isEmpty {
             if errorPointer != nil {
                 let userInfo: NSDictionary = [NSLocalizedDescriptionKey: "Brakuje nazwy użytkownika"]
-                errorPointer?.memory = NSError(domain: PBErrorDomain, code: PBErrorCode.BlankUsernameError.rawValue, userInfo: userInfo)
+                errorPointer?.memory = NSError(domain: PTBErrorDomain, code: PTBErrorCode.BlankUsernameError.rawValue, userInfo: userInfo)
             }
             return false
         }
@@ -24,13 +24,13 @@ extension String {
         return true
     }
     
-    func validatePassword(errorPointer: NSErrorPointer?) -> Bool {
+    func isValidPassword(errorPointer: NSErrorPointer?) -> Bool {
         
         // Check if empty
         if self.isEmpty {
             if errorPointer != nil {
                 let userInfo: NSDictionary = [NSLocalizedDescriptionKey: "Brakuje hasła"]
-                errorPointer?.memory = NSError(domain: PBErrorDomain, code: PBErrorCode.BlankPasswordError.rawValue, userInfo: userInfo)
+                errorPointer?.memory = NSError(domain: PTBErrorDomain, code: PTBErrorCode.BlankPasswordError.rawValue, userInfo: userInfo)
             }
             return false
         }

@@ -11,8 +11,8 @@ import Parse
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var userTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     
 // MARK: Lifecycle
@@ -23,18 +23,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } else {
             
             // Focus on username field
-            self.userTextField.becomeFirstResponder()
+            self.usernameField.becomeFirstResponder()
         }
     }
     
 // MARK: Button Actions
     @IBAction func logInAction(sender: AnyObject) {
         
-        let username: String = userTextField.text
-        let password: String = passwordTextField.text
+        let username: String = usernameField.text
+        let password: String = passwordField.text
         
         var error: NSError?
-        if (username.validateUsername(&error) && password.validatePassword(&error)) {
+        if (username.isValidUsername(&error) && password.isValidPassword(&error)) {
             
             // Log in
             self.logInWithUsername(username, password: password);

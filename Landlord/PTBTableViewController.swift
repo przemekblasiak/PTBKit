@@ -1,5 +1,5 @@
 //
-//  PBTableViewController.swift
+//  PTBTableViewController.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 18.11.2014.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class PBTableViewController: UITableViewController {
+class PTBTableViewController: UITableViewController {
 
 // MARK: Properties
     
@@ -67,7 +67,7 @@ class PBTableViewController: UITableViewController {
         
         var item: PFObject = self.items[indexPath.row]
         if (itemTitleColumnName != nil) {
-            cell!.textLabel.text = (item[itemTitleColumnName] as String)
+            cell!.textLabel?.text = (item[itemTitleColumnName] as String)
         }
         if (itemSubtitleColumnName != nil) {
             cell!.detailTextLabel?.text = (item[itemSubtitleColumnName] as String)

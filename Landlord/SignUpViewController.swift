@@ -23,6 +23,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
 // MARK: Actions
     @IBAction func goBackAction(sender: UIButton) {
+
+        // Hide keyboard
+        for view in self.view.subviews {
+            if view.isFirstResponder() {
+                view.resignFirstResponder()
+            }
+        }
+
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -32,7 +40,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let repeatPassword: String = self.repeatPasswordField.text
         
         var error: NSError?
-        if (username.validateUsername(&error) && password.validatePassword(&error) && repeatPassword.validatePassword(&error)) {
+        if (username.isValidUsername(&error) && password.isValidPassword(&error) && repeatPassword.isValidPassword(&error)) {
             if (password == repeatPassword) {
                 self.signUpWithUsername(username, password: password)
             } else {

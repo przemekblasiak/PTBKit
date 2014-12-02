@@ -8,7 +8,5 @@
 
 import UIKit
 
-class PropertyDetailViewController: UIViewController {
-
-    @IBOutlet weak var addressLabel: UILabel!
+class PropertyDetailViewController: UITableViewController {
 }

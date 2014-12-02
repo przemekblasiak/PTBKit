@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Log In-->
@@ -43,7 +43,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="EDF-ww-Egp" kind="presentation" id="ofZ-Lg-jto"/>
+                                    <segue destination="EDF-ww-Egp" kind="presentation" modalPresentationStyle="fullScreen" id="ofZ-Lg-jto"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqC-nA-3UN">
@@ -97,8 +97,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="logInButton" destination="UqC-nA-3UN" id="omJ-qZ-KpE"/>
-                        <outlet property="passwordTextField" destination="uxs-nG-KLM" id="MVW-Hd-q4K"/>
-                        <outlet property="userTextField" destination="pKb-dH-JYG" id="woz-yK-hhm"/>
+                        <outlet property="passwordField" destination="uxs-nG-KLM" id="fD3-2D-6zj"/>
+                        <outlet property="usernameField" destination="pKb-dH-JYG" id="sLg-xD-8cn"/>
                         <segue destination="RIY-k2-JNb" kind="show" identifier="LogInSegue" id="fF3-V3-KHQ"/>
                     </connections>
                 </viewController>
@@ -144,6 +144,7 @@
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hasło" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YzS-nG-arS">
                                 <rect key="frame" x="412" y="262" width="200" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -153,6 +154,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Użytkownik" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IIm-a3-Cn2">
                                 <rect key="frame" x="412" y="224" width="200" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -193,6 +195,7 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Powtórzenie hasła" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tcR-0H-P59">
                                 <rect key="frame" x="412" y="300" width="200" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -213,34 +216,48 @@
             </objects>
             <point key="canvasLocation" x="1681" y="2582"/>
         </scene>
-        <!--Property Detail View Controller-->
-        <scene sceneID="Ual-vL-5Po">
+        <!--Adres-->
+        <scene sceneID="JPP-73-UxU">
             <objects>
-                <viewController id="XbN-9e-4DV" customClass="PropertyDetailViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Kcx-jb-kKL"/>
-                        <viewControllerLayoutGuide type="bottom" id="lwc-rF-EKv"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="S6m-8A-cLm">
+                <tableViewController id="AKT-Mi-kS9" customClass="PropertyDetailViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6ef-Yd-Lel">
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPw-cS-Rlz">
-                                <rect key="frame" x="16" y="373" width="671" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="addressLabel" destination="yPw-cS-Rlz" id="il1-gV-Teh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mue-NB-yYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KS4-Qw-LdB">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KS4-Qw-LdB" id="si6-Vi-MCL">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AKT-Mi-kS9" id="PVe-xu-x9H"/>
+                            <outlet property="delegate" destination="AKT-Mi-kS9" id="uRD-ey-spo"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Adres" id="hT3-0f-gR2"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pae-GP-i9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5203.5" y="3178"/>
+            <point key="canvasLocation" x="6069" y="3218"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R2a-eo-EVa">
+            <objects>
+                <navigationController id="ABd-hy-0mM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9TR-vg-JIm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AKT-Mi-kS9" kind="relationship" relationship="rootViewController" id="4Cg-fG-mRg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J9K-jP-4Jw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5198.5" y="3200"/>
         </scene>
         <!--Nieruchomości-->
         <scene sceneID="dh9-wu-MoQ">
@@ -414,7 +431,7 @@
                     <tabBarItem key="tabBarItem" title="Nieruchomości" image="House" id="YVb-2K-JxM"/>
                     <connections>
                         <segue destination="D0v-qJ-j6M" kind="relationship" relationship="masterViewController" id="A80-t8-i1a"/>
-                        <segue destination="XbN-9e-4DV" kind="relationship" relationship="detailViewController" id="xU8-zx-8XF"/>
+                        <segue destination="ABd-hy-0mM" kind="relationship" relationship="detailViewController" id="U6a-z1-dm4"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGe-sl-W8o" userLabel="First Responder" sceneMemberID="firstResponder"/>

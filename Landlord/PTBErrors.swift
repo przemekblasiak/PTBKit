@@ -1,5 +1,5 @@
 //
-//  PBErrors.swift
+//  PTBErrors.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 01.12.2014.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-let PBErrorDomain: String = "com.bprzemyslaw.PB.ErrorDomain"
+let PTBErrorDomain: String = "com.bprzemyslaw.PTB.ErrorDomain"
 
-enum PBErrorCode: Int {
+enum PTBErrorCode: Int {
     case BlankUsernameError = 1
     case BlankPasswordError = 2
 }
