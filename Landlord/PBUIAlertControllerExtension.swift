@@ -30,10 +30,10 @@ extension UIAlertController {
         }
     }
     
-    convenience init(type: UIAlertControllerType, code: Int?) {
+    convenience init(type: UIAlertControllerType, error: NSError) {
         var codeDescription: String?
-        if let errorCode = code {
-            switch errorCode {
+        if (error.domain == "Parse") {
+            switch error.code {
             case 100:
                 codeDescription = "Brakuje połączenia z internetem."
             case 101:
@@ -41,8 +41,12 @@ extension UIAlertController {
             case 202:
                 codeDescription = "Podana nazwa użytkownika jest już zajęta."
             default:
-                codeDescription = "Error code: " + String(errorCode)
+                codeDescription = String(error.localizedDescription)
             }
+        } else {
+            
+            // For my domain and other
+            codeDescription = String(error.localizedDescription)
         }
         
         self.init(type: .Error, message: codeDescription)

@@ -15,6 +15,8 @@
 		B54114F01A04FF3000A91BAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54114EF1A04FF3000A91BAD /* Images.xcassets */; };
 		B54114F31A04FF3000A91BAD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54114F11A04FF3000A91BAD /* LaunchScreen.xib */; };
 		B54114FF1A04FF3000A91BAD /* LandlordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54114FE1A04FF3000A91BAD /* LandlordTests.swift */; };
+		B54D54C81A2CF06C007930A6 /* PBErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54D54C71A2CF06C007930A6 /* PBErrors.swift */; };
+		B579BEC41A2D246800F8B4C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579BEC31A2D246800F8B4C1 /* SignUpViewController.swift */; };
 		B5B5650E1A23BA4D00A44BC8 /* TenantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5650D1A23BA4D00A44BC8 /* TenantsTableViewController.swift */; };
 		B5BB6D3C1A0502D50060FEB7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D3A1A0502D50060FEB7 /* Bolts.framework */; };
 		B5BB6D3D1A0502D50060FEB7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D3B1A0502D50060FEB7 /* Parse.framework */; };
@@ -56,6 +58,8 @@
 		B54114F81A04FF3000A91BAD /* LandlordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LandlordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54114FD1A04FF3000A91BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54114FE1A04FF3000A91BAD /* LandlordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandlordTests.swift; sourceTree = "<group>"; };
+		B54D54C71A2CF06C007930A6 /* PBErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBErrors.swift; sourceTree = "<group>"; };
+		B579BEC31A2D246800F8B4C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B5B5650D1A23BA4D00A44BC8 /* TenantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenantsTableViewController.swift; sourceTree = "<group>"; };
 		B5BB6D3A1A0502D50060FEB7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		B5BB6D3B1A0502D50060FEB7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			children = (
 				B508EB7E1A0C4B27009075CC /* PBStringExtenstion.swift */,
 				B51FA2B71A22779E006B81C0 /* PBUIAlertControllerExtension.swift */,
+				B54D54C71A2CF06C007930A6 /* PBErrors.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				B5BB6D581A0569BF0060FEB7 /* Main.storyboard */,
 				B5BB6D521A0537610060FEB7 /* LoginViewController.swift */,
 				B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */,
+				B579BEC31A2D246800F8B4C1 /* SignUpViewController.swift */,
 				B54114EF1A04FF3000A91BAD /* Images.xcassets */,
 				B54114F11A04FF3000A91BAD /* LaunchScreen.xib */,
 				B54114E61A04FF3000A91BAD /* Supporting Files */,
@@ -319,8 +325,10 @@
 				B5F995B51A06B72700E019EE /* PropertiesTableViewController.swift in Sources */,
 				B50B584C1A1ADBB100998EF4 /* PBTableViewController.swift in Sources */,
 				B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */,
+				B579BEC41A2D246800F8B4C1 /* SignUpViewController.swift in Sources */,
 				B508EB7F1A0C4B27009075CC /* PBStringExtenstion.swift in Sources */,
 				B52251901A180E03006BB1CD /* PropertyDetailViewController.swift in Sources */,
+				B54D54C81A2CF06C007930A6 /* PBErrors.swift in Sources */,
 				B5B5650E1A23BA4D00A44BC8 /* TenantsTableViewController.swift in Sources */,
 				B51FA2B81A22779E006B81C0 /* PBUIAlertControllerExtension.swift in Sources */,
 			);

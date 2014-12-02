@@ -9,57 +9,44 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    // MARK: Properties
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
-
-    // MARK: Lifecycle
+    
+// MARK: Lifecycle
     override func viewDidAppear(animated: Bool) {
         let currentUser: PFUser? = PFUser.currentUser()
         if currentUser != nil {
             self.performSegueWithIdentifier("LogInSegue", sender: self)
-        }
-    }
-    
-    // MARK: Button Actions
-    @IBAction func signUpAction(sender: AnyObject) {
-        let (fieldsAreValid: Bool, errorString: String) = self.fieldsAreValid()
-        
-        if fieldsAreValid {
-            let username = userTextField.text,
-                password = passwordTextField.text
-            
-            // Sign up
-            self.signUpWithUsername(username, password: password)
         } else {
             
-            // Present error alert with error message
-            var alert = UIAlertController(type: .Error, message: errorString)
-            self.presentViewController(alert, animated: true, completion: nil)
+            // Focus on username field
+            self.userTextField.becomeFirstResponder()
         }
     }
     
+// MARK: Button Actions
     @IBAction func logInAction(sender: AnyObject) {
-        let (fieldsAreValid: Bool, errorString: String) = self.fieldsAreValid()
         
-        if fieldsAreValid {
-            let username: String = userTextField.text,
-                password: String = passwordTextField.text
+        let username: String = userTextField.text
+        let password: String = passwordTextField.text
+        
+        var error: NSError?
+        if (username.validateUsername(&error) && password.validatePassword(&error)) {
             
             // Log in
             self.logInWithUsername(username, password: password);
         } else {
             
             // Present alert with error message
-            var alert = UIAlertController(type: .Error, message: errorString)
+            var alert = UIAlertController(type: .Error, error: error!)
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
-    // MARK: Private
+// MARK: Log in
     func logInWithUsername(username: String, password: String) {
         
         // Present Progress Alert //TODO: Change to real progress bar
@@ -84,7 +71,7 @@ class LoginViewController: UIViewController {
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Show failure
-                    var alert = UIAlertController(type: .Error, code: error.code)
+                    var alert = UIAlertController(type: .Error, error: error)
                     self.presentViewController(alert, animated: true, completion: nil)
 
                 })
@@ -92,56 +79,34 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func signUpWithUsername(username: String, password: String) {
+    
+// MARK: UITextField delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         
-        // Create new user
-        var newUser = PFUser()
-        newUser.username = username
-        newUser.password = password
-        
-        // Present Progress Alert
-        var progressAlert = UIAlertController(title: "Tworzenie konta...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-        self.presentViewController(progressAlert, animated: true, completion: nil)
-        
-        // Try to sign up
-        newUser.signUpInBackgroundWithBlock {
-            (succeeded: Bool!, error: NSError!) -> Void in
-            if error == nil {
-                
-                // Dismiss Progress Alert
-                progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    
-                    // Log in
-                    self.logInWithUsername(newUser.username, password: newUser.password)
-                })
-            } else {
-                
-                // Dismiss Progress Alert
-                progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    
-                    // Show failure
-                    var alert = UIAlertController(type: .Error, code: error.code)
-                    self.presentViewController(alert, animated: true, completion: nil)
-                })
-            }
-        }
-    }
-
-    func fieldsAreValid() -> (valid: Bool, errorString: String) {
-        
-        // Check username
-        var validationResult = self.userTextField.text.isUsernameValid()
-        if !validationResult.valid {
-            return validationResult
+        // Next as return button, for other fields
+        let nextTag: Int = textField.tag + 1
+        if let nextResponder: UIResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            self.logInAction(self)
         }
         
-        // Check password
-        validationResult = self.passwordTextField.text.isPasswordValid()
-        if !validationResult.valid {
-            return validationResult
-        }
-        
-        return (true, "")
+        return true
     }
     
+// Set return key type to Next, or Done
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        
+        // Set Next as return key until there is no next field
+        let nextTag: Int = textField.tag + 1
+        if let nextField: UITextField = textField.superview?.viewWithTag(nextTag) as? UITextField {
+            textField.returnKeyType = UIReturnKeyType.Next
+        } else {
+            textField.returnKeyType = UIReturnKeyType.Done
+        }
+        
+        return true
+    }
+    
+// MARK: Ungrouped
 }

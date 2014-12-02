@@ -98,18 +98,18 @@ class PBTableViewController: UITableViewController {
             query.whereKey("userId", equalTo: PFUser.currentUser())
             query.findObjectsInBackgroundWithBlock {
                 (objects: [AnyObject]!, error: NSError!) -> Void in
+                self.refreshControl?.endRefreshing()
                 
                 // Succeeded
                 if error == nil {
                     self.items = objects! as [PFObject]
                     self.tableView.reloadData()
-                    self.refreshControl?.endRefreshing()
                     
                     // Failed
                 } else {
                     
                     // Present Alert
-                    var alert = UIAlertController(type: .Error, code: error.code)
+                    var alert = UIAlertController(type: .Error, error: error)
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
             }

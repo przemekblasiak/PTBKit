@@ -10,23 +10,31 @@ import Foundation
 
 extension String {
     
-    func isUsernameValid() -> (valid: Bool, errorString: String) {
+    func validateUsername(errorPointer: NSErrorPointer?) -> Bool {
         
-        // Check if not empty
+        // Check if empty
         if self.isEmpty {
-            return (false, "Brakuje nazwy użytkownika")
+            if errorPointer != nil {
+                let userInfo: NSDictionary = [NSLocalizedDescriptionKey: "Brakuje nazwy użytkownika"]
+                errorPointer?.memory = NSError(domain: PBErrorDomain, code: PBErrorCode.BlankUsernameError.rawValue, userInfo: userInfo)
+            }
+            return false
         }
         
-        return (true, "")
+        return true
     }
     
-    func isPasswordValid() -> (valid: Bool, errorString: String) {
+    func validatePassword(errorPointer: NSErrorPointer?) -> Bool {
         
-        // Check if not empty
+        // Check if empty
         if self.isEmpty {
-            return (false, "Brakuje hasła")
+            if errorPointer != nil {
+                let userInfo: NSDictionary = [NSLocalizedDescriptionKey: "Brakuje hasła"]
+                errorPointer?.memory = NSError(domain: PBErrorDomain, code: PBErrorCode.BlankPasswordError.rawValue, userInfo: userInfo)
+            }
+            return false
         }
         
-        return (true, "")
+        return true
     }
 }
