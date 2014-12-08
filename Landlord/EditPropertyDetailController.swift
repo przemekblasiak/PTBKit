@@ -11,7 +11,7 @@ import Parse
 
 class EditPropertyDetailController: UITableViewController {
     weak var property: PFObject!
-    var saveChanges: Bool = true // Save changes by default
+    var shouldSaveChanges: Bool = true // Save changes by default
     var masterController: PropertiesController!
 
 // MARK: Outlets
@@ -19,13 +19,14 @@ class EditPropertyDetailController: UITableViewController {
     @IBOutlet weak var cityAddressField: UITextField!
     @IBOutlet weak var noteTextView: UITextView!
     
+// MARK: Lifecycle
     override func viewDidLoad() {
         self.masterController = (self.splitViewController!.viewControllers[0] as UINavigationController).topViewController as PropertiesController
     }
     
     override func viewWillAppear(animated: Bool) {
         if self.property != nil {
-            self.streetAddressField.text = self.property["address"] as? String
+            self.streetAddressField.text = self.property["streetAddress"] as? String
             self.cityAddressField.text = self.property["city"] as? String
             self.noteTextView.text = self.property["note"] as? String
         }
@@ -33,33 +34,39 @@ class EditPropertyDetailController: UITableViewController {
     
     override func viewWillDisappear(animated: Bool) {
         if self.property != nil {
-            if saveChanges {
-                
-                // Save changes
-                self.property["address"]? = self.streetAddressField.text
-                self.property["city"]? = self.cityAddressField.text
-                self.property["note"]? = self.noteTextView.text
-                self.property.saveEventually()
-                
-                // Remember selected row, then reload table, and reselect the row
-                let selectedRowPath: NSIndexPath! = self.masterController?.tableView.indexPathForSelectedRow()?
-                self.masterController.tableView.reloadData()
-                if selectedRowPath != nil {
-                    self.masterController.tableView.selectRowAtIndexPath(selectedRowPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
-                }
+            if self.shouldSaveChanges {
+                self.saveChanges()
             }
         }
     }
     
 // MARK: Actions
     @IBAction func cancelAction(sender: UIBarButtonItem) {
-        self.saveChanges = false
+        self.shouldSaveChanges = false
         self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func doneAction(sender: UIBarButtonItem) {
-        self.saveChanges = true
+        self.shouldSaveChanges = true
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+// MARK: Private
+    func saveChanges() {
+        
+        // Save changes
+        self.property["streetAddress"]? = self.streetAddressField.text
+        self.property["city"]? = self.cityAddressField.text
+        self.property["note"]? = self.noteTextView.text
+        self.property.saveEventually()
+        
+        // Remember selected row, then reload table, and reselect the row
+        let selectedRowPath: NSIndexPath! = self.masterController?.tableView.indexPathForSelectedRow()?
+        self.masterController.tableView.reloadData()
+        if selectedRowPath != nil {
+            self.masterController.tableView.selectRowAtIndexPath(selectedRowPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+        }
+
     }
     
     //TODO: Next, next, ..., Done

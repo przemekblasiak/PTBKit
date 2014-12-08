@@ -93,6 +93,10 @@ class PTBTableViewController: UITableViewController {
 // MARK: Update data
     
     func updateItems() {
+        
+        // Remember current selection
+        let selectedRowPath: NSIndexPath? = self.tableView?.indexPathForSelectedRow()?
+        
         if (self.itemClassName != nil) {
             var query = PFQuery(className: self.itemClassName)
             query.whereKey("userId", equalTo: PFUser.currentUser())
@@ -105,7 +109,12 @@ class PTBTableViewController: UITableViewController {
                     self.items = objects! as [PFObject]
                     self.tableView.reloadData()
                     
-                    // Failed
+                    // Preserve previously selected row
+                    if selectedRowPath != nil {
+                        self.tableView?.selectRowAtIndexPath(selectedRowPath, animated: false, scrollPosition: .None)
+                    }
+                    
+                // Failed
                 } else {
                     
                     // Present Alert

@@ -21,7 +21,7 @@ class PropertyDetailController: UITableViewController {
             
             // Construct address string
             var address: String = ""
-            if let streetAddress: String = self.property["address"] as? String {
+            if let streetAddress: String = self.property["streetAddress"] as? String {
                 address += streetAddress
                 if let cityAddress: String = self.property["city"] as? String {
                     address += ", "
@@ -30,7 +30,7 @@ class PropertyDetailController: UITableViewController {
             }
             
             self.addressLabel.text = address
-            self.notesTextView.text = self.property["notes"] as? String
+            self.notesTextView.text = self.property["note"] as? String
             var c = (self.splitViewController?.viewControllers[0] as UINavigationController).topViewController
         }
     }
