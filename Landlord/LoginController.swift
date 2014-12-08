@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  LogInController.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 01.11.2014.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LogInController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!

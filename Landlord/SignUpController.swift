@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  SignUpController.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 01.12.2014.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatPasswordField: UITextField!
@@ -56,16 +56,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
 // MARK: Sign up
     func signUpWithUsername(username: String, password: String) {
         
@@ -87,7 +77,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Log in
-                    let presentingController: LoginViewController = self.presentingViewController as LoginViewController
+                    let presentingController: LogInController = self.presentingViewController as LogInController
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in
                         presentingController.logInWithUsername(newUser.username, password: newUser.password)
                     })

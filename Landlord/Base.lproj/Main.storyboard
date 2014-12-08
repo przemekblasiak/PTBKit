@@ -7,7 +7,7 @@
         <!--Log In-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LogInController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="1747" y="1686"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign Up Controller-->
         <scene sceneID="R2M-Lf-LmN">
             <objects>
-                <viewController id="EDF-ww-Egp" customClass="SignUpViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EDF-ww-Egp" customClass="SignUpController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s0B-Sn-OW9"/>
                         <viewControllerLayoutGuide type="bottom" id="2os-jP-5rJ"/>
@@ -216,32 +216,160 @@
             </objects>
             <point key="canvasLocation" x="1681" y="2582"/>
         </scene>
-        <!--Adres-->
+        <!--Szczegóły-->
         <scene sceneID="JPP-73-UxU">
             <objects>
-                <tableViewController id="AKT-Mi-kS9" customClass="PropertyDetailViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6ef-Yd-Lel">
+                <tableViewController id="AKT-Mi-kS9" customClass="PropertyDetailController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6ef-Yd-Lel">
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KS4-Qw-LdB">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KS4-Qw-LdB" id="si6-Vi-MCL">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="40" maxY="0.0"/>
+                        <sections>
+                            <tableViewSection headerTitle="Adres" id="GWJ-ee-wSZ">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="gXX-8n-ToK" style="IBUITableViewCellStyleDefault" id="KS4-Qw-LdB">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KS4-Qw-LdB" id="si6-Vi-MCL">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ulica, Miejscowość" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gXX-8n-ToK">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Notatka" id="ski-5G-CPH">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="200" id="izy-CF-AQV">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="izy-CF-AQV" id="yq6-fO-i73">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Treść notatki" translatesAutoresizingMaskIntoConstraints="NO" id="JDB-R9-JFm">
+                                                    <rect key="frame" x="10" y="1" width="685" height="198"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="AKT-Mi-kS9" id="PVe-xu-x9H"/>
                             <outlet property="delegate" destination="AKT-Mi-kS9" id="uRD-ey-spo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Adres" id="hT3-0f-gR2"/>
+                    <navigationItem key="navigationItem" title="Szczegóły" id="hT3-0f-gR2">
+                        <barButtonItem key="rightBarButtonItem" title="Edycja" id="sNs-fj-5d0">
+                            <connections>
+                                <segue destination="Kr5-Yw-qEy" kind="show" identifier="ShowEditProperty" id="saJ-JY-Rpl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addressLabel" destination="gXX-8n-ToK" id="3gb-6J-ZmS"/>
+                        <outlet property="notesTextView" destination="JDB-R9-JFm" id="OhM-RE-cys"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pae-GP-i9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6069" y="3218"/>
+            <point key="canvasLocation" x="6068.5" y="3200"/>
+        </scene>
+        <!--Edycja-->
+        <scene sceneID="AgZ-hl-Izn">
+            <objects>
+                <tableViewController id="Kr5-Yw-qEy" customClass="EditPropertyDetailController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tNo-Pp-Owc">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Adres" id="NU5-02-HUB">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EGw-yh-Ijw">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EGw-yh-Ijw" id="mDt-J8-m5A">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ulica i numer lokalu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wM3-ma-EZ2">
+                                                    <rect key="frame" x="15" y="10" width="680" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wTz-QG-5cg">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTz-QG-5cg" id="gen-ji-ASp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Miasto" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YPR-EF-f5Z">
+                                                    <rect key="frame" x="15" y="10" width="680" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Notatka" id="1yi-Vz-mzU">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Q2j-jr-Ktp">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q2j-jr-Ktp" id="u12-10-k2J">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-9y-6vC">
+                                                    <rect key="frame" x="10" y="1" width="685" height="198"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Kr5-Yw-qEy" id="PHL-Qv-qpe"/>
+                            <outlet property="delegate" destination="Kr5-Yw-qEy" id="1cF-3g-iMf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edycja" id="jcY-kQ-uzN">
+                        <barButtonItem key="leftBarButtonItem" title="Anuluj" id="flq-dx-ba6">
+                            <connections>
+                                <action selector="cancelAction:" destination="Kr5-Yw-qEy" id="R76-2n-u6X"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Gotowe" id="i08-y3-UO1">
+                            <connections>
+                                <action selector="doneAction:" destination="Kr5-Yw-qEy" id="IxZ-Nd-spq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cityAddressField" destination="YPR-EF-f5Z" id="xK6-Qr-S8h"/>
+                        <outlet property="noteTextView" destination="P6H-9y-6vC" id="Adn-2k-08K"/>
+                        <outlet property="streetAddressField" destination="wM3-ma-EZ2" id="MSv-hN-n3p"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2RA-5A-qZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6876.5" y="3200"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R2a-eo-EVa">
@@ -262,7 +390,7 @@
         <!--Nieruchomości-->
         <scene sceneID="dh9-wu-MoQ">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ArY-Ym-GmZ" customClass="PropertiesTableViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ArY-Ym-GmZ" customClass="PropertiesController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AVC-w3-PoM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,6 +409,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ABd-hy-0mM" kind="showDetail" id="h07-XU-dac"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -345,7 +476,7 @@
         <!--Najemcy-->
         <scene sceneID="jHf-Nb-tlz">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="vc3-Wg-Gw7" customClass="TenantsTableViewController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="vc3-Wg-Gw7" customClass="TenantsController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YOA-uF-4bE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -463,6 +594,7 @@
         <image name="Tenants" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ty8-PU-FIt"/>
+        <segue reference="U6a-z1-dm4"/>
+        <segue reference="exr-wu-urn"/>
     </inferredMetricsTieBreakers>
 </document>

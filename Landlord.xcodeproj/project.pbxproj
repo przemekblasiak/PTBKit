@@ -10,14 +10,15 @@
 		B508EB7F1A0C4B27009075CC /* PTBStringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B508EB7E1A0C4B27009075CC /* PTBStringExtenstion.swift */; };
 		B50B584C1A1ADBB100998EF4 /* PTBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50B584B1A1ADBB100998EF4 /* PTBTableViewController.swift */; };
 		B51FA2B81A22779E006B81C0 /* PTBUIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FA2B71A22779E006B81C0 /* PTBUIAlertControllerExtension.swift */; };
-		B52251901A180E03006BB1CD /* PropertyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */; };
+		B52251901A180E03006BB1CD /* PropertyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B522518F1A180E03006BB1CD /* PropertyDetailController.swift */; };
 		B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54114E81A04FF3000A91BAD /* AppDelegate.swift */; };
 		B54114F01A04FF3000A91BAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54114EF1A04FF3000A91BAD /* Images.xcassets */; };
 		B54114F31A04FF3000A91BAD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54114F11A04FF3000A91BAD /* LaunchScreen.xib */; };
 		B54114FF1A04FF3000A91BAD /* LandlordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54114FE1A04FF3000A91BAD /* LandlordTests.swift */; };
 		B54D54C81A2CF06C007930A6 /* PTBErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54D54C71A2CF06C007930A6 /* PTBErrors.swift */; };
-		B579BEC41A2D246800F8B4C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579BEC31A2D246800F8B4C1 /* SignUpViewController.swift */; };
-		B5B5650E1A23BA4D00A44BC8 /* TenantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5650D1A23BA4D00A44BC8 /* TenantsTableViewController.swift */; };
+		B559A7C91A34A27C008DBE2D /* EditPropertyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559A7C81A34A27C008DBE2D /* EditPropertyDetailController.swift */; };
+		B579BEC41A2D246800F8B4C1 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579BEC31A2D246800F8B4C1 /* SignUpController.swift */; };
+		B5B5650E1A23BA4D00A44BC8 /* TenantsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */; };
 		B5BB6D3C1A0502D50060FEB7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D3A1A0502D50060FEB7 /* Bolts.framework */; };
 		B5BB6D3D1A0502D50060FEB7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D3B1A0502D50060FEB7 /* Parse.framework */; };
 		B5BB6D3F1A0502EF0060FEB7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D3E1A0502EF0060FEB7 /* AudioToolbox.framework */; };
@@ -30,9 +31,9 @@
 		B5BB6D4F1A05032D0060FEB7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D4C1A05032D0060FEB7 /* Security.framework */; };
 		B5BB6D501A05032D0060FEB7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D4D1A05032D0060FEB7 /* StoreKit.framework */; };
 		B5BB6D511A05032D0060FEB7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D4E1A05032D0060FEB7 /* SystemConfiguration.framework */; };
-		B5BB6D531A0537610060FEB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6D521A0537610060FEB7 /* LoginViewController.swift */; };
+		B5BB6D531A0537610060FEB7 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6D521A0537610060FEB7 /* LoginController.swift */; };
 		B5BB6D5A1A0569BF0060FEB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BB6D581A0569BF0060FEB7 /* Main.storyboard */; };
-		B5F995B51A06B72700E019EE /* PropertiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F995B41A06B72700E019EE /* PropertiesTableViewController.swift */; };
+		B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F995B41A06B72700E019EE /* PropertiesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,7 @@
 		B508EB7E1A0C4B27009075CC /* PTBStringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBStringExtenstion.swift; sourceTree = "<group>"; };
 		B50B584B1A1ADBB100998EF4 /* PTBTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBTableViewController.swift; sourceTree = "<group>"; };
 		B51FA2B71A22779E006B81C0 /* PTBUIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBUIAlertControllerExtension.swift; sourceTree = "<group>"; };
-		B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailViewController.swift; sourceTree = "<group>"; };
+		B522518F1A180E03006BB1CD /* PropertyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailController.swift; sourceTree = "<group>"; };
 		B54114E31A04FF3000A91BAD /* Landlord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landlord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54114E71A04FF3000A91BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54114E81A04FF3000A91BAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,8 +60,9 @@
 		B54114FD1A04FF3000A91BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54114FE1A04FF3000A91BAD /* LandlordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandlordTests.swift; sourceTree = "<group>"; };
 		B54D54C71A2CF06C007930A6 /* PTBErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBErrors.swift; sourceTree = "<group>"; };
-		B579BEC31A2D246800F8B4C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		B5B5650D1A23BA4D00A44BC8 /* TenantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenantsTableViewController.swift; sourceTree = "<group>"; };
+		B559A7C81A34A27C008DBE2D /* EditPropertyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPropertyDetailController.swift; sourceTree = "<group>"; };
+		B579BEC31A2D246800F8B4C1 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenantsController.swift; sourceTree = "<group>"; };
 		B5BB6D3A1A0502D50060FEB7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		B5BB6D3B1A0502D50060FEB7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		B5BB6D3E1A0502EF0060FEB7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -73,11 +75,11 @@
 		B5BB6D4C1A05032D0060FEB7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B5BB6D4D1A05032D0060FEB7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B5BB6D4E1A05032D0060FEB7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B5BB6D521A0537610060FEB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LoginViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B5BB6D521A0537610060FEB7 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LoginController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5BB6D541A05408B0060FEB7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B5BB6D561A0540C00060FEB7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		B5BB6D591A0569BF0060FEB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B5F995B41A06B72700E019EE /* PropertiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesTableViewController.swift; sourceTree = "<group>"; };
+		B5F995B41A06B72700E019EE /* PropertiesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,11 +155,12 @@
 			children = (
 				B50B58481A1AD3F300998EF4 /* PTB Framework */,
 				B54114E81A04FF3000A91BAD /* AppDelegate.swift */,
-				B5F995B41A06B72700E019EE /* PropertiesTableViewController.swift */,
-				B5B5650D1A23BA4D00A44BC8 /* TenantsTableViewController.swift */,
-				B5BB6D521A0537610060FEB7 /* LoginViewController.swift */,
-				B579BEC31A2D246800F8B4C1 /* SignUpViewController.swift */,
-				B522518F1A180E03006BB1CD /* PropertyDetailViewController.swift */,
+				B5F995B41A06B72700E019EE /* PropertiesController.swift */,
+				B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */,
+				B5BB6D521A0537610060FEB7 /* LoginController.swift */,
+				B579BEC31A2D246800F8B4C1 /* SignUpController.swift */,
+				B522518F1A180E03006BB1CD /* PropertyDetailController.swift */,
+				B559A7C81A34A27C008DBE2D /* EditPropertyDetailController.swift */,
 				B54114EF1A04FF3000A91BAD /* Images.xcassets */,
 				B5BB6D581A0569BF0060FEB7 /* Main.storyboard */,
 				B54114F11A04FF3000A91BAD /* LaunchScreen.xib */,
@@ -321,15 +324,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5BB6D531A0537610060FEB7 /* LoginViewController.swift in Sources */,
-				B5F995B51A06B72700E019EE /* PropertiesTableViewController.swift in Sources */,
+				B5BB6D531A0537610060FEB7 /* LoginController.swift in Sources */,
+				B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */,
 				B50B584C1A1ADBB100998EF4 /* PTBTableViewController.swift in Sources */,
+				B559A7C91A34A27C008DBE2D /* EditPropertyDetailController.swift in Sources */,
 				B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */,
-				B579BEC41A2D246800F8B4C1 /* SignUpViewController.swift in Sources */,
+				B579BEC41A2D246800F8B4C1 /* SignUpController.swift in Sources */,
 				B508EB7F1A0C4B27009075CC /* PTBStringExtenstion.swift in Sources */,
-				B52251901A180E03006BB1CD /* PropertyDetailViewController.swift in Sources */,
+				B52251901A180E03006BB1CD /* PropertyDetailController.swift in Sources */,
 				B54D54C81A2CF06C007930A6 /* PTBErrors.swift in Sources */,
-				B5B5650E1A23BA4D00A44BC8 /* TenantsTableViewController.swift in Sources */,
+				B5B5650E1A23BA4D00A44BC8 /* TenantsController.swift in Sources */,
 				B51FA2B81A22779E006B81C0 /* PTBUIAlertControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

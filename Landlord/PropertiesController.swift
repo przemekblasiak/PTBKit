@@ -1,5 +1,5 @@
 //
-//  PropertiesTableViewController.swift
+//  PropertiesController.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 02.11.2014.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class PropertiesTableViewController: PTBTableViewController {
+class PropertiesController: PTBTableViewController, UISplitViewControllerDelegate {
     
 // MARK: Properties
     var propertyTypes = [PFObject]()
@@ -17,6 +17,8 @@ class PropertiesTableViewController: PTBTableViewController {
 // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.splitViewController?.delegate = self
         
         // Customize the table
         self.itemClassName = "Property"
@@ -37,13 +39,15 @@ class PropertiesTableViewController: PTBTableViewController {
             }
         }
     }
-    
+
+// MARK: TableVC delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let detailViewController: PropertyDetailViewController = (self.splitViewController?.viewControllers[1] as UINavigationController).topViewController as PropertyDetailViewController
-            
-        // Set title on detail's navigation bar
-        detailViewController.navigationItem.title = self.items[indexPath.row]["address"] as String?
+        // Pass data to detail controller
+        let detailController: PropertyDetailController! = (self.splitViewController?.viewControllers[1] as UINavigationController).topViewController as? PropertyDetailController
+        if detailController != nil {
+            detailController.property = self.items[indexPath.row]
+        }
     }
     
 // MARK: Log in/out

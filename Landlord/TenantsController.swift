@@ -1,5 +1,5 @@
 //
-//  TenantsTableViewController.swift
+//  TenantsController.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 24.11.2014.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class TenantsTableViewController: PTBTableViewController {
+class TenantsController: PTBTableViewController {
     
 // MARK: Lifecycle
     override func viewDidLoad() {
