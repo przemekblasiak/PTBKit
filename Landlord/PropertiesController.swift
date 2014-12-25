@@ -43,11 +43,7 @@ class PropertiesController: PTBTableViewController, UISplitViewControllerDelegat
 // MARK: TableVC delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        // Pass data to detail controller
-        let detailController: PropertyDetailController! = (self.splitViewController?.viewControllers[1] as UINavigationController).topViewController as? PropertyDetailController
-        if detailController != nil {
-            detailController.property = self.items[indexPath.row]
-        }
+        
     }
     
 // MARK: Log in/out
@@ -68,5 +64,17 @@ class PropertiesController: PTBTableViewController, UISplitViewControllerDelegat
             }
             ))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+// MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowDetailController") {
+            
+            // Pass data to detail controller
+            let detailController: PropertyDetailController! = (segue.destinationViewController as UINavigationController).topViewController as? PropertyDetailController
+            if detailController != nil {
+                detailController.property = self.items[self.tableView.indexPathForSelectedRow()!.row]
+            }
+        }
     }
 }

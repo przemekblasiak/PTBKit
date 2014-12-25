@@ -12,7 +12,6 @@ import Parse
 class PTBTableViewController: UITableViewController {
 
 // MARK: Properties
-    
     // Subclass configurables
     var itemClassName: String?
     var itemTitleColumnName: String?
@@ -21,7 +20,6 @@ class PTBTableViewController: UITableViewController {
     var items = [PFObject]()
 
 // MARK: Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +46,6 @@ class PTBTableViewController: UITableViewController {
     }
     
 // MARK: - Table view data source
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -76,8 +73,7 @@ class PTBTableViewController: UITableViewController {
         return cell!
     }
     
-// MARK: - Table view delegate
-
+// MARK: TableView delegate
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -91,7 +87,6 @@ class PTBTableViewController: UITableViewController {
     }
     
 // MARK: Update data
-    
     func updateItems() {
         
         // Remember current selection
@@ -134,12 +129,23 @@ class PTBTableViewController: UITableViewController {
         
         // Add the item
         self.items.insert(newItem, atIndex: self.items.count)
-        newItem.saveInBackgroundWithBlock(nil)
+        newItem.saveEventually()
 
         // Insert new row
         self.tableView.beginUpdates()
-        var indexPath = NSIndexPath(forRow: self.items.count - 1, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        let rowPath = NSIndexPath(forRow: self.items.count - 1, inSection: 0)
+        self.tableView.insertRowsAtIndexPaths([rowPath!], withRowAnimation: .Automatic)
         self.tableView.endUpdates()
+        
+        // Select the row
+        self.selectItemAtIndexPath(rowPath)
+    }
+    
+// MARK: Table interaction
+    func selectItemAtIndexPath(path: NSIndexPath) {
+        self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .None)
+        self.tableView(self.tableView, didSelectRowAtIndexPath: path)
+        self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: .None, animated: true)
+        self.performSegueWithIdentifier("ShowDetailController", sender: self)
     }
 }

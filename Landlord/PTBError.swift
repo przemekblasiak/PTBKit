@@ -1,5 +1,5 @@
 //
-//  PTBErrors.swift
+//  PTBError.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 01.12.2014.

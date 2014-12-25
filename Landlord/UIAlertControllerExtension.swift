@@ -1,6 +1,6 @@
 
 //
-//  PTBUIAlertControllerExtension.swift
+//  UIAlertControllerExtension.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 23.11.2014.

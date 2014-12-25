@@ -46,4 +46,15 @@ class TenantsController: PTBTableViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+// MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowDetailController") {
+            
+            // Pass data to detail controller
+            let detailController: PTBDetailController! = (segue.destinationViewController as UINavigationController).topViewController as? PTBDetailController
+            if detailController != nil {
+                detailController.item = self.items[self.tableView.indexPathForSelectedRow()!.row]
+            }
+        }
+    }
 }
