@@ -15,5 +15,7 @@ class TenantDetailController: PTBDetailController {
 
         self.addCell(style: .TextField, sectionName: "Nazwa", columnName: "name")
         self.addCell(style: .TextView, sectionName: "Notatka", columnName: "note")
+        
+        self.title = "Szczegóły"
     }
 }
