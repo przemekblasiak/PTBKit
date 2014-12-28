@@ -71,7 +71,7 @@ class PropertiesController: PTBMasterController, UISplitViewControllerDelegate {
         if (segue.identifier == "ShowDetailController") {
             
             // Pass data to detail controller
-            let detailController: PropertyDetailController! = (segue.destinationViewController as UINavigationController).topViewController as? PropertyDetailController
+            let detailController: PTBDetailController! = (segue.destinationViewController as UINavigationController).topViewController as? PTBDetailController
             if detailController != nil {
                 detailController.item = self.items[self.tableView.indexPathForSelectedRow()!.row]
             }
