@@ -13,17 +13,16 @@ class PTBTextViewCell: PTBTableViewCell {
 // MARK: Outlets
     @IBOutlet weak var textView: UITextView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func setValue(value: AnyObject) {
+        self.textView.text = value as NSString
     }
     
-    override func setText(text: String) {
-        self.textView.text = text
+    override func getValue() -> AnyObject {
+        return self.textView.text
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.textView.editable = editing
     }
 }

@@ -13,22 +13,15 @@ class PTBTextFieldCell: PTBTableViewCell {
 // MARK: Outlets
     @IBOutlet weak var textField: UITextField!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-        if self.columnName != nil {
-            self.textField.text = columnName
-        }
+    override func setValue(value: AnyObject) {
+        self.textField.text = value as String
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func getValue() -> AnyObject {
+        return self.textField.text
     }
     
-    override func setText(text: String) {
-        self.textField.text = text
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.textField.enabled = editing
     }
 }

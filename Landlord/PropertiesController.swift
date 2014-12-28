@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class PropertiesController: PTBTableViewController, UISplitViewControllerDelegate {
+class PropertiesController: PTBMasterController, UISplitViewControllerDelegate {
     
 // MARK: Properties
     var propertyTypes = [PFObject]()
@@ -73,7 +73,7 @@ class PropertiesController: PTBTableViewController, UISplitViewControllerDelegat
             // Pass data to detail controller
             let detailController: PropertyDetailController! = (segue.destinationViewController as UINavigationController).topViewController as? PropertyDetailController
             if detailController != nil {
-                detailController.property = self.items[self.tableView.indexPathForSelectedRow()!.row]
+                detailController.item = self.items[self.tableView.indexPathForSelectedRow()!.row]
             }
         }
     }

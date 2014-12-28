@@ -14,26 +14,15 @@ enum PTBTableViewCellStyle {
     case Switch
 }
 
+// TODO: Protocol/Interface?
 class PTBTableViewCell: UITableViewCell {
 
-    // MARK: Properties
+// MARK: Properties
     var columnName: String!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        if self.columnName != nil {
-            self.setText(self.columnName)
-        }
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    // TODO: Refactor, maybe computed property or sth
+    func setValue(value: AnyObject) {}
+    func getValue() -> AnyObject { return 0 }
     
-    func setText(text: String) {
-    }
-
+    func setName(name: String) {}
 }

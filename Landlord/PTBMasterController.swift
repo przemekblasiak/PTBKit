@@ -1,5 +1,5 @@
 //
-//  PTBTableViewController.swift
+//  PTBMasterController.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 18.11.2014.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class PTBTableViewController: UITableViewController {
+class PTBMasterController: UITableViewController {
 
 // MARK: Properties
     // Subclass configurables
@@ -142,6 +142,16 @@ class PTBTableViewController: UITableViewController {
     }
     
 // MARK: Table interaction
+    func refresh() {
+        
+        // Remember selected row, then reload table, and reselect the row
+        let selectedRowPath: NSIndexPath! = self.tableView.indexPathForSelectedRow()?
+        self.tableView.reloadData()
+        if selectedRowPath != nil {
+            self.tableView.selectRowAtIndexPath(selectedRowPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+        }
+    }
+    
     func selectItemAtIndexPath(path: NSIndexPath) {
         self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .None)
         self.tableView(self.tableView, didSelectRowAtIndexPath: path)

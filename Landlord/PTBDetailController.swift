@@ -17,10 +17,13 @@ class PTBDetailController: UITableViewController {
     var cellInfos = [[Dictionary<String, AnyObject>]]()
     var shouldSaveChanges = true
     var cancelButton: UIBarButtonItem!
+    var masterController: PTBMasterController!
     
 // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.masterController = (self.splitViewController!.viewControllers[0] as UINavigationController).topViewController as PTBMasterController
         
         // Set grouped style
         self.tableView = UITableView(frame: self.tableView.frame, style: .Grouped)
@@ -40,6 +43,8 @@ class PTBDetailController: UITableViewController {
         // Enable editting
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.cancelButton = UIBarButtonItem(title: "Anuluj", style: .Plain, target: self, action: "cancelPressed:")
+        
+        self.title = "Szczegóły"
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -48,7 +53,7 @@ class PTBDetailController: UITableViewController {
         }
     }
 
-// MARK: Table view data source
+// MARK: TableView data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
@@ -68,14 +73,28 @@ class PTBDetailController: UITableViewController {
         
         // When no row is selected //TODO: Present other controller in the situation
         if self.item != nil {
-            cell.setText(self.item[cellInfo["ColumnName"] as String] as String)
+            cell.setName(cellInfo["CellName"] as String)
+            if let value: AnyObject = self.item[cellInfo["ColumnName"] as String] {
+                cell.setValue(value)
+            } else {
+                let columnName = cellInfo["ColumnName"] as String
+                println("PTB: There is no column named \"\(columnName)\" in the Parse object")
+            }
         }
         
         return cell
     }
     
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .None
+    }
+    
+    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+    
 // MARK: Private
-    func addCell(#style: PTBTableViewCellStyle, sectionName: String, columnName: String) {
+    func addCell(#style: PTBTableViewCellStyle, sectionName: String, cellName: String, columnName: String) {
         
         var cellIdentifier: String!
         switch style {
@@ -92,6 +111,7 @@ class PTBDetailController: UITableViewController {
         var cellInfo = Dictionary<String, AnyObject>()
         cellInfo["Identifier"] = cellIdentifier as String
         cellInfo["ColumnName"] = columnName
+        cellInfo["CellName"] = cellName
         
         // Find section number
         var sectionNumber: Int! = find(self.sectionNames, sectionName)
@@ -107,15 +127,11 @@ class PTBDetailController: UITableViewController {
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: true)
         
-        if editing {
-            // TODO: Make fields editable etc.
-        } else {
-            // TODO: Make fields readonly etc.
-            
+        if !editing {
             if shouldSaveChanges {
                 self.saveChanges()
             } else {
-                self.resetFieldValues()
+                self.tableView.reloadData() // Reset field values
                 self.shouldSaveChanges = true
             }
         }
@@ -131,22 +147,22 @@ class PTBDetailController: UITableViewController {
         }
     }
     
-    // Disable insert/delete styles
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .None
-    }
-    
-    // Disable indentation
-    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-    
     func saveChanges() {
-        // TODO: Save changes
-    }
-    
-    func resetFieldValues() {
-        // TODO: Reset values of all fields
+        for (var section = 0; section < self.cellInfos.count; ++section) {
+            for (var row = 0; row < self.cellInfos[section].count; ++row) {
+                let cellInfo = self.cellInfos[section][row]
+                let cell: PTBTableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as PTBTableViewCell
+                if self.item != nil { // TODO: Remove after implementing seperate VC for no selection
+                    self.item[cellInfo["ColumnName"] as String] = cell.getValue()
+                }
+            }
+        }
+        
+        if self.masterController != nil {
+            self.masterController.refresh()
+        }
+        
+        self.item.saveEventually() //TODO: Why does it have to be AFTER the refresh
     }
     
 // MARK: Button actions
@@ -154,23 +170,4 @@ class PTBDetailController: UITableViewController {
         self.shouldSaveChanges = false
         self.setEditing(false, animated: true)
     }
-    
-        override func setEditing(editing: Bool, animated: Bool) {
-            super.setEditing(editing, animated: true)
-            
-            if editing {
-                // TODO: Make fields editable, rearrange them etc.
-            } else {
-                // TODO: Make fields readonly, rearrange them etc.
-                
-                if shouldSaveChanges {
-                    self.saveChanges()
-                } else {
-                    self.resetFieldValues()
-                    self.shouldSaveChanges = true
-                }
-            }
-            
-            showCancelButton(editing)
-        }
 }

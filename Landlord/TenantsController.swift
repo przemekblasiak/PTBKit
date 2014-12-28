@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class TenantsController: PTBTableViewController {
+class TenantsController: PTBMasterController {
     
 // MARK: Lifecycle
     override func viewDidLoad() {
