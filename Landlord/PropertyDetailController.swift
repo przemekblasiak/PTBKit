@@ -17,5 +17,4 @@ class PropertyDetailController: PTBDetailController {
         self.addCell(style: .TextField, sectionName: "Adres", cellName:"Miasto", columnName: "city")
         self.addCell(style: .TextView, sectionName: "Notatka", cellName:"Treść", columnName: "note")
     }
-
 }

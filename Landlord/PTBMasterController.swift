@@ -86,6 +86,9 @@ class PTBMasterController: UITableViewController {
         }
     }
     
+    // TODO: Solve the problem with splitView. Why do I have to prevent it from calling super?
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) { }
+    
 // MARK: Update data
     func updateItems() {
         

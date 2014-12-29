@@ -38,6 +38,7 @@
 		B5BB6D5A1A0569BF0060FEB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BB6D581A0569BF0060FEB7 /* Main.storyboard */; };
 		B5BD04611A49899000D3C1E4 /* PTBSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BD04601A49899000D3C1E4 /* PTBSwitchCell.swift */; };
 		B5BD04641A4990F900D3C1E4 /* PTBSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BD04621A4989AD00D3C1E4 /* PTBSwitchCell.xib */; };
+		B5E6435C1A50CB22002E51FE /* TTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E6435B1A50CB22002E51FE /* TTableViewController.swift */; };
 		B5F42F4E1A3E654C00C2A052 /* PTBTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F42F4C1A3E654C00C2A052 /* PTBTextFieldCell.swift */; };
 		B5F42F4F1A3E654C00C2A052 /* PTBTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F42F4D1A3E654C00C2A052 /* PTBTextFieldCell.xib */; };
 		B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F995B41A06B72700E019EE /* PropertiesController.swift */; };
@@ -92,6 +93,7 @@
 		B5BB6D591A0569BF0060FEB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5BD04601A49899000D3C1E4 /* PTBSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBSwitchCell.swift; sourceTree = "<group>"; };
 		B5BD04621A4989AD00D3C1E4 /* PTBSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBSwitchCell.xib; sourceTree = "<group>"; };
+		B5E6435B1A50CB22002E51FE /* TTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableViewController.swift; sourceTree = "<group>"; };
 		B5F42F4C1A3E654C00C2A052 /* PTBTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBTextFieldCell.swift; sourceTree = "<group>"; };
 		B5F42F4D1A3E654C00C2A052 /* PTBTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBTextFieldCell.xib; sourceTree = "<group>"; };
 		B5F995B41A06B72700E019EE /* PropertiesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */,
 				B5BB6D521A0537610060FEB7 /* LoginController.swift */,
 				B579BEC31A2D246800F8B4C1 /* SignUpController.swift */,
+				B5E6435B1A50CB22002E51FE /* TTableViewController.swift */,
 				B5FCAAF61A366B4C0033D08E /* TenantDetailController.swift */,
 				B58E93431A504B0C00E2DEDD /* PropertyDetailController.swift */,
 				B54114EF1A04FF3000A91BAD /* Images.xcassets */,
@@ -386,6 +389,7 @@
 				B5F42F4E1A3E654C00C2A052 /* PTBTextFieldCell.swift in Sources */,
 				B5BB6D531A0537610060FEB7 /* LoginController.swift in Sources */,
 				B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */,
+				B5E6435C1A50CB22002E51FE /* TTableViewController.swift in Sources */,
 				B5BD04611A49899000D3C1E4 /* PTBSwitchCell.swift in Sources */,
 				B50B584C1A1ADBB100998EF4 /* PTBMasterController.swift in Sources */,
 				B58E93441A504B0C00E2DEDD /* PropertyDetailController.swift in Sources */,

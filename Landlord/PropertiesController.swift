@@ -39,12 +39,6 @@ class PropertiesController: PTBMasterController, UISplitViewControllerDelegate {
             }
         }
     }
-
-// MARK: TableVC delegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
-    }
     
 // MARK: Log in/out
     func logOut() {
