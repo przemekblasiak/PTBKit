@@ -9,19 +9,22 @@
 import UIKit
 import Parse
 
-class PTBMasterController: UITableViewController {
+class PTBMasterController: UITableViewController, UISplitViewControllerDelegate {
 
 // MARK: Properties
     // Subclass configurables
     var itemClassName: String?
     var itemTitleColumnName: String?
     var itemSubtitleColumnName: String?
+    var detailControllerStoryboardId: String!
     
     var items = [PFObject]()
 
 // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.splitViewController?.delegate = self
         
         // Add an add action
         let addItemSelector: Selector = Selector("addItem")
@@ -42,7 +45,7 @@ class PTBMasterController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        self.updateItems()
+        self.updateItems() // TODO: not too often?
     }
     
 // MARK: - Table view data source
@@ -79,21 +82,15 @@ class PTBMasterController: UITableViewController {
         if editingStyle == .Delete {
             
             // Delete selected item
-            self.items.removeAtIndex(indexPath.row).deleteInBackgroundWithBlock(nil)
-            tableView.beginUpdates()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            tableView.endUpdates()
+            self.removeItem(indexPath: indexPath)
         }
     }
-    
-    // TODO: Solve the problem with splitView. Why do I have to prevent it from calling super?
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) { }
     
 // MARK: Update data
     func updateItems() {
         
         // Remember current selection
-        let selectedRowPath: NSIndexPath? = self.tableView?.indexPathForSelectedRow()?
+        let selectedRowPath: NSIndexPath! = self.tableView?.indexPathForSelectedRow()?
         
         if (self.itemClassName != nil) {
             var query = PFQuery(className: self.itemClassName)
@@ -109,7 +106,10 @@ class PTBMasterController: UITableViewController {
                     
                     // Preserve previously selected row
                     if selectedRowPath != nil {
-                        self.tableView?.selectRowAtIndexPath(selectedRowPath, animated: false, scrollPosition: .None)
+                        
+                        // TODO: use self.selectItem... method, why does the scroll stuck?
+                        self.tableView.selectRowAtIndexPath(selectedRowPath, animated: true, scrollPosition: .None)
+                        self.performSegueWithIdentifier("ShowDetailView", sender: self)
                     }
                     
                 // Failed
@@ -139,9 +139,21 @@ class PTBMasterController: UITableViewController {
         let rowPath = NSIndexPath(forRow: self.items.count - 1, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([rowPath!], withRowAnimation: .Automatic)
         self.tableView.endUpdates()
-        
+
         // Select the row
-        self.selectItemAtIndexPath(rowPath)
+       self.selectItemAtIndexPath(rowPath)
+    }
+    
+    func removeItem(#indexPath: NSIndexPath) {
+        
+        // Delete selected item
+        self.items.removeAtIndex(indexPath.row).deleteInBackgroundWithBlock(nil)
+        tableView.beginUpdates()
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.endUpdates()
+        
+        // TODO: If in result no row is selected, then preset blank detail view
+        self.performSegueWithIdentifier("ShowDetailView", sender: self)
     }
     
 // MARK: Table interaction
@@ -151,14 +163,30 @@ class PTBMasterController: UITableViewController {
         let selectedRowPath: NSIndexPath! = self.tableView.indexPathForSelectedRow()?
         self.tableView.reloadData()
         if selectedRowPath != nil {
-            self.tableView.selectRowAtIndexPath(selectedRowPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+            self.selectItemAtIndexPath(selectedRowPath)
         }
     }
     
     func selectItemAtIndexPath(path: NSIndexPath) {
         self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .None)
-        self.tableView(self.tableView, didSelectRowAtIndexPath: path)
+//        self.tableView(self.tableView, didSelectRowAtIndexPath: path) //TODO: WHY??? super.didSelect.. is causing trouble
         self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: .None, animated: true)
-        self.performSegueWithIdentifier("ShowDetailController", sender: self)
+        self.performSegueWithIdentifier("ShowDetailView", sender: self)
+    }
+    
+// MARK: SplitView delegate
+
+// MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowDetailView") {
+            
+            // Pass data to detail controller if any row is selected
+            if self.tableView.indexPathForSelectedRow() != nil {
+                let detailController: PTBDetailController! = (segue.destinationViewController as UINavigationController).topViewController as? PTBDetailController
+                if detailController != nil {
+                    detailController.item = self.items[self.tableView.indexPathForSelectedRow()!.row]
+                }
+            }
+        }
     }
 }

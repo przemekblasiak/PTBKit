@@ -25,26 +25,31 @@ class PTBDetailController: UITableViewController {
         
         self.masterController = (self.splitViewController!.viewControllers[0] as UINavigationController).topViewController as PTBMasterController
         
-        // Set grouped style
-        self.tableView = UITableView(frame: self.tableView.frame, style: .Grouped)
-        
-        // Set estimated row height for the scroll indicator to assume
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 60
-        
-        // Register reusable cells
-        var nib = UINib(nibName: "PTBTextViewCell", bundle: NSBundle.mainBundle())
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "TextViewCell")
-        nib = UINib(nibName: "PTBTextFieldCell", bundle: NSBundle.mainBundle())
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "TextFieldCell")
-        nib = UINib(nibName: "PTBSwitchCell", bundle: NSBundle.mainBundle())
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "SwitchCell")
-        
-        // Enable editting
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.cancelButton = UIBarButtonItem(title: "Anuluj", style: .Plain, target: self, action: "cancelPressed:")
-        
-        self.title = "Szczegóły"
+        if self.item != nil {
+            
+            // Set grouped style
+            self.tableView = UITableView(frame: self.tableView.frame, style: .Grouped)
+            
+            // Set estimated row height for the scroll indicator to assume
+            self.tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.estimatedRowHeight = 60
+            
+            // Register reusable cells
+            var nib = UINib(nibName: "PTBTextViewCell", bundle: NSBundle.mainBundle())
+            self.tableView.registerNib(nib, forCellReuseIdentifier: "TextViewCell")
+            nib = UINib(nibName: "PTBTextFieldCell", bundle: NSBundle.mainBundle())
+            self.tableView.registerNib(nib, forCellReuseIdentifier: "TextFieldCell")
+            nib = UINib(nibName: "PTBSwitchCell", bundle: NSBundle.mainBundle())
+            self.tableView.registerNib(nib, forCellReuseIdentifier: "SwitchCell")
+            
+            // Enable editting
+            self.navigationItem.rightBarButtonItem = self.editButtonItem()
+            self.cancelButton = UIBarButtonItem(title: "Anuluj", style: .Plain, target: self, action: "cancelPressed:")
+            
+            self.title = "Szczegóły"
+        } else {
+            self.tableView.hidden = true
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -95,31 +100,32 @@ class PTBDetailController: UITableViewController {
     
 // MARK: Private
     func addCell(#style: PTBTableViewCellStyle, sectionName: String, cellName: String, columnName: String) {
-        
-        var cellIdentifier: String!
-        switch style {
-        case .TextView:
-            cellIdentifier = "TextViewCell"
-        case .TextField:
-            cellIdentifier = "TextFieldCell"
-        case .Switch:
-            cellIdentifier = "SwitchCell"
-        default:
-            println("PTB: Style not handled")
-        }
-        
-        var cellInfo = Dictionary<String, AnyObject>()
-        cellInfo["Identifier"] = cellIdentifier as String
-        cellInfo["ColumnName"] = columnName
-        cellInfo["CellName"] = cellName
-        
-        // Find section number
-        var sectionNumber: Int! = find(self.sectionNames, sectionName)
-        if sectionNumber == nil { // It is a new section
-            self.sectionNames.append(sectionName)
-            self.cellInfos.append([cellInfo])
-        } else {
-            self.cellInfos[sectionNumber].append(cellInfo)
+        if self.item != nil {
+            var cellIdentifier: String!
+            switch style {
+            case .TextView:
+                cellIdentifier = "TextViewCell"
+            case .TextField:
+                cellIdentifier = "TextFieldCell"
+            case .Switch:
+                cellIdentifier = "SwitchCell"
+            default:
+                println("PTB: Style not handled")
+            }
+            
+            var cellInfo = Dictionary<String, AnyObject>()
+            cellInfo["Identifier"] = cellIdentifier as String
+            cellInfo["ColumnName"] = columnName
+            cellInfo["CellName"] = cellName
+            
+            // Find section number
+            var sectionNumber: Int! = find(self.sectionNames, sectionName)
+            if sectionNumber == nil { // It is a new section
+                self.sectionNames.append(sectionName)
+                self.cellInfos.append([cellInfo])
+            } else {
+                self.cellInfos[sectionNumber].append(cellInfo)
+            }
         }
     }
     

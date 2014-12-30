@@ -10,6 +10,7 @@
 		B508EB7F1A0C4B27009075CC /* StringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B508EB7E1A0C4B27009075CC /* StringExtenstion.swift */; };
 		B50B584C1A1ADBB100998EF4 /* PTBMasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50B584B1A1ADBB100998EF4 /* PTBMasterController.swift */; };
 		B518AB4B1A440B5700AA08B5 /* PTBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518AB4A1A440B5700AA08B5 /* PTBTableViewCell.swift */; };
+		B51A4F6C1A52A0FC00BECBC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51A4F6A1A52A0FC00BECBC9 /* Main.storyboard */; };
 		B51FA2B81A22779E006B81C0 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FA2B71A22779E006B81C0 /* UIAlertControllerExtension.swift */; };
 		B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54114E81A04FF3000A91BAD /* AppDelegate.swift */; };
 		B54114F01A04FF3000A91BAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54114EF1A04FF3000A91BAD /* Images.xcassets */; };
@@ -35,10 +36,8 @@
 		B5BB6D501A05032D0060FEB7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D4D1A05032D0060FEB7 /* StoreKit.framework */; };
 		B5BB6D511A05032D0060FEB7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BB6D4E1A05032D0060FEB7 /* SystemConfiguration.framework */; };
 		B5BB6D531A0537610060FEB7 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6D521A0537610060FEB7 /* LoginController.swift */; };
-		B5BB6D5A1A0569BF0060FEB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BB6D581A0569BF0060FEB7 /* Main.storyboard */; };
 		B5BD04611A49899000D3C1E4 /* PTBSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BD04601A49899000D3C1E4 /* PTBSwitchCell.swift */; };
 		B5BD04641A4990F900D3C1E4 /* PTBSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BD04621A4989AD00D3C1E4 /* PTBSwitchCell.xib */; };
-		B5E6435C1A50CB22002E51FE /* TTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E6435B1A50CB22002E51FE /* TTableViewController.swift */; };
 		B5F42F4E1A3E654C00C2A052 /* PTBTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F42F4C1A3E654C00C2A052 /* PTBTextFieldCell.swift */; };
 		B5F42F4F1A3E654C00C2A052 /* PTBTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F42F4D1A3E654C00C2A052 /* PTBTextFieldCell.xib */; };
 		B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F995B41A06B72700E019EE /* PropertiesController.swift */; };
@@ -59,6 +58,7 @@
 		B508EB7E1A0C4B27009075CC /* StringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtenstion.swift; sourceTree = "<group>"; };
 		B50B584B1A1ADBB100998EF4 /* PTBMasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBMasterController.swift; sourceTree = "<group>"; };
 		B518AB4A1A440B5700AA08B5 /* PTBTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBTableViewCell.swift; sourceTree = "<group>"; };
+		B51A4F6B1A52A0FC00BECBC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B51FA2B71A22779E006B81C0 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		B54114E31A04FF3000A91BAD /* Landlord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landlord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54114E71A04FF3000A91BAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,10 +90,8 @@
 		B5BB6D521A0537610060FEB7 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LoginController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5BB6D541A05408B0060FEB7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B5BB6D561A0540C00060FEB7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		B5BB6D591A0569BF0060FEB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5BD04601A49899000D3C1E4 /* PTBSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBSwitchCell.swift; sourceTree = "<group>"; };
 		B5BD04621A4989AD00D3C1E4 /* PTBSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBSwitchCell.xib; sourceTree = "<group>"; };
-		B5E6435B1A50CB22002E51FE /* TTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableViewController.swift; sourceTree = "<group>"; };
 		B5F42F4C1A3E654C00C2A052 /* PTBTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBTextFieldCell.swift; sourceTree = "<group>"; };
 		B5F42F4D1A3E654C00C2A052 /* PTBTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBTextFieldCell.xib; sourceTree = "<group>"; };
 		B5F995B41A06B72700E019EE /* PropertiesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesController.swift; sourceTree = "<group>"; };
@@ -178,11 +176,10 @@
 				B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */,
 				B5BB6D521A0537610060FEB7 /* LoginController.swift */,
 				B579BEC31A2D246800F8B4C1 /* SignUpController.swift */,
-				B5E6435B1A50CB22002E51FE /* TTableViewController.swift */,
 				B5FCAAF61A366B4C0033D08E /* TenantDetailController.swift */,
 				B58E93431A504B0C00E2DEDD /* PropertyDetailController.swift */,
 				B54114EF1A04FF3000A91BAD /* Images.xcassets */,
-				B5BB6D581A0569BF0060FEB7 /* Main.storyboard */,
+				B51A4F6A1A52A0FC00BECBC9 /* Main.storyboard */,
 				B54114F11A04FF3000A91BAD /* LaunchScreen.xib */,
 				B54114E61A04FF3000A91BAD /* Supporting Files */,
 			);
@@ -365,8 +362,8 @@
 			files = (
 				B5BD04641A4990F900D3C1E4 /* PTBSwitchCell.xib in Resources */,
 				B583EEA01A3DAD6C00B99B7E /* PTBTextViewCell.xib in Resources */,
-				B5BB6D5A1A0569BF0060FEB7 /* Main.storyboard in Resources */,
 				B54114F31A04FF3000A91BAD /* LaunchScreen.xib in Resources */,
+				B51A4F6C1A52A0FC00BECBC9 /* Main.storyboard in Resources */,
 				B5F42F4F1A3E654C00C2A052 /* PTBTextFieldCell.xib in Resources */,
 				B54114F01A04FF3000A91BAD /* Images.xcassets in Resources */,
 			);
@@ -389,7 +386,6 @@
 				B5F42F4E1A3E654C00C2A052 /* PTBTextFieldCell.swift in Sources */,
 				B5BB6D531A0537610060FEB7 /* LoginController.swift in Sources */,
 				B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */,
-				B5E6435C1A50CB22002E51FE /* TTableViewController.swift in Sources */,
 				B5BD04611A49899000D3C1E4 /* PTBSwitchCell.swift in Sources */,
 				B50B584C1A1ADBB100998EF4 /* PTBMasterController.swift in Sources */,
 				B58E93441A504B0C00E2DEDD /* PropertyDetailController.swift in Sources */,
@@ -425,20 +421,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B51A4F6A1A52A0FC00BECBC9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B51A4F6B1A52A0FC00BECBC9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		B54114F11A04FF3000A91BAD /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B54114F21A04FF3000A91BAD /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		B5BB6D581A0569BF0060FEB7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5BB6D591A0569BF0060FEB7 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

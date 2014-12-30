@@ -275,7 +275,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ABd-hy-0mM" kind="showDetail" identifier="ShowDetailController" id="lZi-xE-Yye"/>
+                                    <segue destination="ABd-hy-0mM" kind="showDetail" identifier="ShowDetailView" id="lZi-xE-Yye"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -355,7 +355,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="LFh-Ld-Cwk" kind="showDetail" identifier="ShowDetailController" id="CkJ-CC-NVd"/>
+                                    <segue destination="LFh-Ld-Cwk" kind="showDetail" identifier="ShowDetailView" id="ETJ-lK-fu3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -464,8 +464,8 @@
         <image name="Tenants" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CkJ-CC-NVd"/>
-        <segue reference="exr-wu-urn"/>
+        <segue reference="ty8-PU-FIt"/>
+        <segue reference="ETJ-lK-fu3"/>
         <segue reference="lZi-xE-Yye"/>
     </inferredMetricsTieBreakers>
 </document>
