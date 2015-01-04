@@ -15,9 +15,7 @@ class TenantsController: PTBMasterController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Customize the table
-        self.itemClassName = "Tenant"
-        self.itemTitleColumnName = "name"
+        self.populate(className: "Tenant", columnName: "name") //TODO: Lepsza nazwa funkcji
         
         // Add a log out action
         let logOutSelector: Selector = Selector("logOut")

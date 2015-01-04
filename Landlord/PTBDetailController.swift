@@ -12,18 +12,18 @@ import Parse
 class PTBDetailController: UITableViewController {
     
 // MARK: Properties
-    var item: PFObject!
+    weak var item: PFObject!
     var sectionNames = [String]()
     var cellInfos = [[Dictionary<String, AnyObject>]]()
     var shouldSaveChanges = true
     var cancelButton: UIBarButtonItem!
-    var masterController: PTBMasterController!
+    var masterController: PTBMasterController! // TODO: WORKAROUND Computed property
     
 // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.masterController = (self.splitViewController!.viewControllers[0] as UINavigationController).topViewController as PTBMasterController
+        self.masterController = (self.splitViewController?.viewControllers[0] as UINavigationController).topViewController as PTBMasterController
         
         if self.item != nil {
             
@@ -53,7 +53,7 @@ class PTBDetailController: UITableViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        if self.tableView.editing {
+        if self.tableView.editing && self.shouldSaveChanges {
             self.saveChanges()
         }
     }
@@ -73,17 +73,13 @@ class PTBDetailController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellInfo = self.cellInfos[indexPath.section][indexPath.row]
-        
         var cell: PTBTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellInfo["Identifier"] as String, forIndexPath: indexPath) as PTBTableViewCell
         
-        // When no row is selected //TODO: Present other controller in the situation
-        if self.item != nil {
+        // When no row is selected
+        if self.item != nil { // TODO: WORKAROUND why is the function called at all?
             cell.setName(cellInfo["CellName"] as String)
             if let value: AnyObject = self.item[cellInfo["ColumnName"] as String] {
                 cell.setValue(value)
-            } else {
-                let columnName = cellInfo["ColumnName"] as String
-                println("PTB: There is no column named \"\(columnName)\" in the Parse object")
             }
         }
         
@@ -137,7 +133,7 @@ class PTBDetailController: UITableViewController {
             if shouldSaveChanges {
                 self.saveChanges()
             } else {
-                self.tableView.reloadData() // Reset field values
+                self.tableView.reloadData() // Restore field values to previous state
                 self.shouldSaveChanges = true
             }
         }
@@ -154,26 +150,34 @@ class PTBDetailController: UITableViewController {
     }
     
     func saveChanges() {
-        for (var section = 0; section < self.cellInfos.count; ++section) {
-            for (var row = 0; row < self.cellInfos[section].count; ++row) {
-                let cellInfo = self.cellInfos[section][row]
-                let cell: PTBTableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as PTBTableViewCell
-                if self.item != nil { // TODO: Remove after implementing seperate VC for no selection
+        if self.item != nil { // TODO: WORKAROUND This check shouldn't be necessary, the whole function should not be called in that case at all. Why is it nil, has it been deleted already?
+            for (var section = 0; section < self.cellInfos.count; ++section) {
+                for (var row = 0; row < self.cellInfos[section].count; ++row) {
+                    let cellInfo = self.cellInfos[section][row]
+                    let cell: PTBTableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as PTBTableViewCell
                     self.item[cellInfo["ColumnName"] as String] = cell.getValue()
                 }
             }
+            self.item.saveEventually()
+            
+            // TODO: WORKAROUND Why can't I simply call reloadRows... in master table
+            // Update row title in master
+            if self.masterController != nil {
+                if let rowIndex = find(self.masterController.items, self.item) {
+                    let cell = self.masterController.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: 0))!
+                    cell.textLabel?.text = self.item[self.masterController.itemTitleColumnName!] as? String
+                }
+            }
         }
-        
-        if self.masterController != nil {
-            self.masterController.refresh()
-        }
-        
-        self.item.saveEventually() //TODO: Why does it have to be AFTER the refresh
+    }
+    
+    func cancel() {
+        self.shouldSaveChanges = false
+        self.setEditing(false, animated: true)
     }
     
 // MARK: Button actions
     func cancelPressed(button: UIBarButtonItem) {
-        self.shouldSaveChanges = false
-        self.setEditing(false, animated: true)
+        self.cancel()
     }
 }

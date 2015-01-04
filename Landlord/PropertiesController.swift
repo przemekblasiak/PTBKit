@@ -20,9 +20,7 @@ class PropertiesController: PTBMasterController, UISplitViewControllerDelegate {
         
         self.splitViewController?.delegate = self
         
-        // Customize the table
-        self.itemClassName = "Property"
-        self.itemTitleColumnName = "streetAddress"
+        self.populate(className: "Property", columnName: "streetAddress")
         
         // Add a log out action
         let logOutSelector: Selector = Selector("logOut")

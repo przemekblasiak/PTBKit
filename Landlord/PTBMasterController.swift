@@ -11,20 +11,30 @@ import Parse
 
 class PTBMasterController: UITableViewController, UISplitViewControllerDelegate {
 
-// MARK: Properties
-    // Subclass configurables
+// MARK: Public properties
+    var detailController: PTBDetailController! { // Read-only computed property
+        return (self.splitViewController?.viewControllers[1] as UINavigationController).topViewController as PTBDetailController
+    }
+    
+// MARK: Public methods
+    func populate(#className: String, columnName: String) {
+        self.itemClassName = className
+        self.itemTitleColumnName = columnName
+        self.updateItems()
+    }
+    
+// MARK: Private properties
     var itemClassName: String?
     var itemTitleColumnName: String?
-    var itemSubtitleColumnName: String?
-    var detailControllerStoryboardId: String!
-    
     var items = [PFObject]()
 
 // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.splitViewController?.delegate = self
+//        self.splitViewController?.delegate = self
+        
+        self.tableView.delegate = self
         
         // Add an add action
         let addItemSelector: Selector = Selector("addItem")
@@ -42,13 +52,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         self.clearsSelectionOnViewWillAppear = false
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        
-        self.updateItems() // TODO: not too often?
-    }
-    
-// MARK: - Table view data source
+// MARK: - TableView data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -69,9 +73,6 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         if (itemTitleColumnName != nil) {
             cell!.textLabel?.text = (item[itemTitleColumnName] as String)
         }
-        if (itemSubtitleColumnName != nil) {
-            cell!.detailTextLabel?.text = (item[itemSubtitleColumnName] as String)
-        }
         
         return cell!
     }
@@ -86,12 +87,12 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
 // MARK: Update data
     func updateItems() {
-        
-        // Remember current selection
-        let selectedRowPath: NSIndexPath! = self.tableView?.indexPathForSelectedRow()?
-        
         if (self.itemClassName != nil) {
             var query = PFQuery(className: self.itemClassName)
             query.whereKey("userId", equalTo: PFUser.currentUser())
@@ -102,15 +103,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
                 // Succeeded
                 if error == nil {
                     self.items = objects! as [PFObject]
-                    self.tableView.reloadData()
-                    
-                    // Preserve previously selected row
-                    if selectedRowPath != nil {
-                        
-                        // TODO: use self.selectItem... method, why does the scroll stuck?
-                        self.tableView.selectRowAtIndexPath(selectedRowPath, animated: true, scrollPosition: .None)
-                        self.performSegueWithIdentifier("ShowDetailView", sender: self)
-                    }
+                    self.refresh()
                     
                 // Failed
                 } else {
@@ -139,38 +132,32 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         let rowPath = NSIndexPath(forRow: self.items.count - 1, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([rowPath!], withRowAnimation: .Automatic)
         self.tableView.endUpdates()
-
-        // Select the row
-       self.selectItemAtIndexPath(rowPath)
+        
+        self.selectItemAtIndexPath(rowPath)
+        self.detailController.setEditing(true, animated: true)
     }
     
     func removeItem(#indexPath: NSIndexPath) {
         
-        // Delete selected item
-        self.items.removeAtIndex(indexPath.row).deleteInBackgroundWithBlock(nil)
+        self.performSegueWithIdentifier("ShowDetailView", sender: self) // Present blank detail view
+        
+        // Delete the item
         tableView.beginUpdates()
+        self.items.removeAtIndex(indexPath.row).deleteInBackgroundWithBlock(nil)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         tableView.endUpdates()
-        
-        // TODO: If in result no row is selected, then preset blank detail view
-        self.performSegueWithIdentifier("ShowDetailView", sender: self)
     }
     
 // MARK: Table interaction
     func refresh() {
         
-        // Remember selected row, then reload table, and reselect the row
-        let selectedRowPath: NSIndexPath! = self.tableView.indexPathForSelectedRow()?
+        // TODO: Preserve selection
         self.tableView.reloadData()
-        if selectedRowPath != nil {
-            self.selectItemAtIndexPath(selectedRowPath)
-        }
     }
     
     func selectItemAtIndexPath(path: NSIndexPath) {
         self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .None)
-//        self.tableView(self.tableView, didSelectRowAtIndexPath: path) //TODO: WHY??? super.didSelect.. is causing trouble
-        self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: .None, animated: true)
+        self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: .None, animated: false)
         self.performSegueWithIdentifier("ShowDetailView", sender: self)
     }
     
@@ -189,4 +176,6 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
             }
         }
     }
+    
+// MARK: Private methods
 }
