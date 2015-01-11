@@ -9,6 +9,9 @@
 import UIKit
 import Parse
 
+/**
+The PTBMasterController class is a UITableViewController subclass responsible for displaying each object of a given Parse class as a row.
+*/
 class PTBMasterController: UITableViewController, UISplitViewControllerDelegate {
 
 // MARK: Public properties

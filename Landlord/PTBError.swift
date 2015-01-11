@@ -8,9 +8,24 @@
 
 import Foundation
 
+/// The error domain for PTBKit errors.
 let PTBErrorDomain: String = "com.bprzemyslaw.PTB.ErrorDomain"
 
+/// NSError codes inv the PTBKit error domain.
 enum PTBErrorCode: Int {
+    
+    /// Blank username.
     case BlankUsernameError = 1
+    
+    /// Blank password.
     case BlankPasswordError = 2
+    
+    var description: String {
+        switch self {
+        case .BlankUsernameError:
+            return "Brakuje nazwy użytkownika."
+        case .BlankPasswordError:
+            return "Brakuje hasła."
+        }
+    }
 }

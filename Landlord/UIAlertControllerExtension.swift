@@ -7,6 +7,10 @@
 //  Copyright (c) 2014 bprzemyslaw. All rights reserved.
 //
 
+/**
+The file contains an extension of the UIAlertController class
+*/
+
 import Foundation
 import UIKit
 
@@ -15,17 +19,21 @@ extension UIAlertController {
     enum UIAlertControllerType {
         case Error
         case Confirm
+        var title: String {
+            switch self {
+            case Error:
+                return "Ups"
+            case Confirm:
+                return "Potwierdzenie"
+            }
+        }
     }
     
     convenience init(type: UIAlertControllerType, message: String?) {
         self.init(title: "", message: message, preferredStyle: .Alert)
         
-        // Do type dependent setup
-        switch type {
-        case .Confirm:
-            self.title = "Potwierdzenie"
-        case .Error:
-            self.title = "Ups"
+        self.title = type.title
+        if type == .Error {
             self.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
         }
     }
@@ -34,6 +42,8 @@ extension UIAlertController {
         var codeDescription: String?
         
         switch error.domain {
+            
+        // Provide descriptions for Parse error codes
         case "Parse":
             switch error.code {
             case 100:

@@ -8,22 +8,25 @@
 
 import UIKit
 
-class PTBSwitchCell: PTBTableViewCell {
+class PTBSwitchCell: UITableViewCell, PTBDetailCell {
 
+    var columnName: String!
+    var name: String! {
+        didSet {
+            self.switchTitleLabel.text = self.name
+        }
+    }
+    
     // MARK: Outlets
     @IBOutlet weak var yesNoSwitch: UISwitch!
     @IBOutlet weak var switchTitleLabel: UILabel!
     
-    override func setValue(value: AnyObject) {
+    func setValue(value: AnyObject) {
         self.yesNoSwitch.on = value as Bool
     }
     
-    override func getValue() -> AnyObject {
+    func getValue() -> AnyObject {
         return self.yesNoSwitch.on
-    }
-    
-    override func setName(name: String) {
-        self.switchTitleLabel.text = name
     }
 
     override func setEditing(editing: Bool, animated: Bool) {

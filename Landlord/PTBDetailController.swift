@@ -9,6 +9,9 @@
 import UIKit
 import Parse
 
+/**
+The PTBDetailController class is a UITableViewController subclass responsible for displaying values of each column of a specified Parse object.
+*/
 class PTBDetailController: UITableViewController {
     
 // MARK: Properties
@@ -73,13 +76,15 @@ class PTBDetailController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellInfo = self.cellInfos[indexPath.section][indexPath.row]
-        var cell: PTBTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellInfo["Identifier"] as String, forIndexPath: indexPath) as PTBTableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellInfo["Identifier"] as String, forIndexPath: indexPath) as UITableViewCell
         
         // When no row is selected
-        if self.item != nil { // TODO: WORKAROUND why is the function called at all?
-            cell.setName(cellInfo["CellName"] as String)
-            if let value: AnyObject = self.item[cellInfo["ColumnName"] as String] {
-                cell.setValue(value)
+        if self.item != nil { // TODO: WORKAROUND why is the function called at all, when there is no item?
+            if let detailCell = cell as? PTBDetailCell {
+                detailCell.name = cellInfo["CellName"] as String
+                if let value: AnyObject = self.item[cellInfo["ColumnName"] as String] {
+                    detailCell.setValue(value)
+                }
             }
         }
         
@@ -95,22 +100,10 @@ class PTBDetailController: UITableViewController {
     }
     
 // MARK: Private
-    func addCell(#style: PTBTableViewCellStyle, sectionName: String, cellName: String, columnName: String) {
+    func addCell(#style: PTBDetailCellStyle, sectionName: String, cellName: String, columnName: String) {
         if self.item != nil {
-            var cellIdentifier: String!
-            switch style {
-            case .TextView:
-                cellIdentifier = "TextViewCell"
-            case .TextField:
-                cellIdentifier = "TextFieldCell"
-            case .Switch:
-                cellIdentifier = "SwitchCell"
-            default:
-                println("PTB: Style not handled")
-            }
-            
             var cellInfo = Dictionary<String, AnyObject>()
-            cellInfo["Identifier"] = cellIdentifier as String
+            cellInfo["Identifier"] = style.cellIdentifier
             cellInfo["ColumnName"] = columnName
             cellInfo["CellName"] = cellName
             
@@ -154,7 +147,7 @@ class PTBDetailController: UITableViewController {
             for (var section = 0; section < self.cellInfos.count; ++section) {
                 for (var row = 0; row < self.cellInfos[section].count; ++row) {
                     let cellInfo = self.cellInfos[section][row]
-                    let cell: PTBTableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as PTBTableViewCell
+                    let cell: PTBDetailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as PTBDetailCell
                     self.item[cellInfo["ColumnName"] as String] = cell.getValue()
                 }
             }

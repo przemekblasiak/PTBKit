@@ -18,8 +18,6 @@ class PropertiesController: PTBMasterController, UISplitViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.splitViewController?.delegate = self
-        
         self.populate(className: "Property", columnName: "streetAddress")
         
         // Add a log out action

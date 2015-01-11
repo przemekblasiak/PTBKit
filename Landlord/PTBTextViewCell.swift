@@ -8,16 +8,19 @@
 
 import UIKit
 
-class PTBTextViewCell: PTBTableViewCell {
+class PTBTextViewCell: UITableViewCell, PTBDetailCell {
+    
+    var columnName: String!
+    var name: String!
     
 // MARK: Outlets
     @IBOutlet weak var textView: UITextView!
     
-    override func setValue(value: AnyObject) {
+    func setValue(value: AnyObject) {
         self.textView.text = value as NSString
     }
     
-    override func getValue() -> AnyObject {
+    func getValue() -> AnyObject {
         return self.textView.text
     }
     
