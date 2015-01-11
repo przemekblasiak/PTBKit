@@ -11,7 +11,11 @@ import UIKit
 class PTBTextFieldCell: UITableViewCell, PTBDetailCell {
     
     var columnName: String!
-    var name: String!
+    var name: String! {
+        didSet {
+            self.textField.placeholder = self.name
+        }
+    }
     
 // MARK: Outlets
     @IBOutlet weak var textField: UITextField!

@@ -33,6 +33,8 @@ class PTBDetailController: UITableViewController {
             // Set grouped style
             self.tableView = UITableView(frame: self.tableView.frame, style: .Grouped)
             
+            self.tableView.allowsSelection = false
+            
             // Set estimated row height for the scroll indicator to assume
             self.tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.estimatedRowHeight = 60

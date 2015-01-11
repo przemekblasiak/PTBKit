@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Single-line text." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZo-8M-QlG">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Single-line text." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sZo-8M-QlG">
                         <rect key="frame" x="8" y="8" width="591" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="0B3-J8-d2o"/>
