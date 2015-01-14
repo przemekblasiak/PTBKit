@@ -1,5 +1,5 @@
 //
-//  LogInController.swift
+//  PTBLoginController.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 01.11.2014.
@@ -9,7 +9,9 @@
 import UIKit
 import Parse
 
-class LogInController: UIViewController, UITextFieldDelegate {
+let PTBUserDidLogInNotification = "UserDidLogIn"
+
+class PTBLoginController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -17,14 +19,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
     
 // MARK: Lifecycle
     override func viewDidAppear(animated: Bool) {
-        let currentUser: PFUser? = PFUser.currentUser()
-        if currentUser != nil {
-            self.performSegueWithIdentifier("LogInSegue", sender: self)
-        } else {
-            
-            // Focus on username field
-            self.usernameField.becomeFirstResponder()
-        }
+        self.usernameField.becomeFirstResponder()
     }
     
 // MARK: Button Actions
@@ -63,7 +58,7 @@ class LogInController: UIViewController, UITextFieldDelegate {
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Segue to next screen
-                    self.performSegueWithIdentifier("LogInSegue", sender: self)
+                    self.performLogin()
                 })
             } else {
                 
@@ -77,6 +72,11 @@ class LogInController: UIViewController, UITextFieldDelegate {
                 })
             }
         }
+    }
+    
+    func performLogin() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(PTBUserDidLogInNotification, object: self)
     }
     
     

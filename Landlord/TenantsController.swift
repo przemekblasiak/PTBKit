@@ -16,31 +16,5 @@ class TenantsController: PTBMasterController {
         super.viewDidLoad()
         
         self.populate(className: "Tenant", columnName: "name") //TODO: Lepsza nazwa funkcji
-        
-        // Add a log out action
-        let logOutSelector: Selector = Selector("logOut")
-        if self.respondsToSelector(logOutSelector) {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Wyloguj", style: UIBarButtonItemStyle.Plain, target: self, action: logOutSelector)
-        }
-    }
-    
-// MARK: Log in/out
-    func logOut() {
-        
-        // Ask to confirm
-        var alert = UIAlertController(title: "Potwierdzenie", message: "Chcesz się wylogować?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Tak", style: UIAlertActionStyle.Default,
-            handler: { (UIAlertAction action) -> Void in
-                PFUser.logOut()
-                
-                // Clear data
-                self.items = []
-                
-                // Go to Log In screen
-                self.performSegueWithIdentifier("LogOutSegue", sender: self)
-            }
-            ))
-        self.presentViewController(alert, animated: true, completion: nil)
     }
 }

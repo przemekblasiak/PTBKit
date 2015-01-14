@@ -37,10 +37,11 @@
 		B557AFE31A603074000F9A8E /* PTBDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B583EE921A3DAB3000B99B7E /* PTBDetailController.swift */; };
 		B557AFE71A6031A5000F9A8E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B557AFE61A6031A5000F9A8E /* Parse.framework */; };
 		B557AFE91A6031B3000F9A8E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B557AFE81A6031B3000F9A8E /* Bolts.framework */; };
-		B579BEC41A2D246800F8B4C1 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579BEC31A2D246800F8B4C1 /* SignUpController.swift */; };
+		B579BEC41A2D246800F8B4C1 /* PTBSignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579BEC31A2D246800F8B4C1 /* PTBSignupController.swift */; };
 		B58E93441A504B0C00E2DEDD /* PropertyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58E93431A504B0C00E2DEDD /* PropertyDetailController.swift */; };
 		B5B5650E1A23BA4D00A44BC8 /* TenantsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */; };
-		B5BB6D531A0537610060FEB7 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6D521A0537610060FEB7 /* LoginController.swift */; };
+		B5BB6D531A0537610060FEB7 /* PTBLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6D521A0537610060FEB7 /* PTBLoginController.swift */; };
+		B5E05D1B1A66B0B500A3C7DE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5E05D1A1A66B0B500A3C7DE /* Login.storyboard */; };
 		B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F995B41A06B72700E019EE /* PropertiesController.swift */; };
 		B5FCAAF71A366B4C0033D08E /* TenantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAAF61A366B4C0033D08E /* TenantDetailController.swift */; };
 /* End PBXBuildFile section */
@@ -96,15 +97,16 @@
 		B557AFE11A603050000F9A8E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B557AFE61A6031A5000F9A8E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.6.1/Parse.framework"; sourceTree = "<group>"; };
 		B557AFE81A6031B3000F9A8E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.6.1/Bolts.framework"; sourceTree = "<group>"; };
-		B579BEC31A2D246800F8B4C1 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		B579BEC31A2D246800F8B4C1 /* PTBSignupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PTBSignupController.swift; path = Landlord/PTBSignupController.swift; sourceTree = "<group>"; };
 		B583EE921A3DAB3000B99B7E /* PTBDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBDetailController.swift; sourceTree = "<group>"; };
 		B583EE9D1A3DAD6C00B99B7E /* PTBTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBTextViewCell.swift; sourceTree = "<group>"; };
 		B583EE9E1A3DAD6C00B99B7E /* PTBTextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBTextViewCell.xib; sourceTree = "<group>"; };
 		B58E93431A504B0C00E2DEDD /* PropertyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailController.swift; sourceTree = "<group>"; };
 		B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenantsController.swift; sourceTree = "<group>"; };
-		B5BB6D521A0537610060FEB7 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LoginController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B5BB6D521A0537610060FEB7 /* PTBLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = PTBLoginController.swift; path = Landlord/PTBLoginController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5BD04601A49899000D3C1E4 /* PTBSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBSwitchCell.swift; sourceTree = "<group>"; };
 		B5BD04621A4989AD00D3C1E4 /* PTBSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBSwitchCell.xib; sourceTree = "<group>"; };
+		B5E05D1A1A66B0B500A3C7DE /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		B5F42F4C1A3E654C00C2A052 /* PTBTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBTextFieldCell.swift; sourceTree = "<group>"; };
 		B5F42F4D1A3E654C00C2A052 /* PTBTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBTextFieldCell.xib; sourceTree = "<group>"; };
 		B5F995B41A06B72700E019EE /* PropertiesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesController.swift; sourceTree = "<group>"; };
@@ -178,8 +180,6 @@
 				B54114E81A04FF3000A91BAD /* AppDelegate.swift */,
 				B5F995B41A06B72700E019EE /* PropertiesController.swift */,
 				B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */,
-				B5BB6D521A0537610060FEB7 /* LoginController.swift */,
-				B579BEC31A2D246800F8B4C1 /* SignUpController.swift */,
 				B5FCAAF61A366B4C0033D08E /* TenantDetailController.swift */,
 				B58E93431A504B0C00E2DEDD /* PropertyDetailController.swift */,
 				B54114EF1A04FF3000A91BAD /* Images.xcassets */,
@@ -218,8 +218,9 @@
 		B557AFC01A602DDC000F9A8E /* PTBKit */ = {
 			isa = PBXGroup;
 			children = (
-				B58B7EFD1A1ADBE400B04275 /* Controllers */,
+				B58B7EFD1A1ADBE400B04275 /* Tables */,
 				B583EE961A3DABF300B99B7E /* Cells */,
+				B5E05D1C1A66ECC800A3C7DE /* Login */,
 				B508EB801A0C4B2C009075CC /* Extensions */,
 				B54D54C71A2CF06C007930A6 /* PTBError.swift */,
 			);
@@ -258,13 +259,13 @@
 			path = Landlord;
 			sourceTree = "<group>";
 		};
-		B58B7EFD1A1ADBE400B04275 /* Controllers */ = {
+		B58B7EFD1A1ADBE400B04275 /* Tables */ = {
 			isa = PBXGroup;
 			children = (
 				B50B584B1A1ADBB100998EF4 /* PTBMasterController.swift */,
 				B583EE921A3DAB3000B99B7E /* PTBDetailController.swift */,
 			);
-			name = Controllers;
+			name = Tables;
 			path = Landlord;
 			sourceTree = "<group>";
 		};
@@ -284,6 +285,16 @@
 				B5F42F4D1A3E654C00C2A052 /* PTBTextFieldCell.xib */,
 			);
 			name = TextFieldCell;
+			sourceTree = "<group>";
+		};
+		B5E05D1C1A66ECC800A3C7DE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B5BB6D521A0537610060FEB7 /* PTBLoginController.swift */,
+				B579BEC31A2D246800F8B4C1 /* PTBSignupController.swift */,
+				B5E05D1A1A66B0B500A3C7DE /* Login.storyboard */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		B5EEEF961A48492A009926B2 /* TextViewCell */ = {
@@ -379,6 +390,7 @@
 			files = (
 				B557AFC81A602E06000F9A8E /* PTBSwitchCell.xib in Resources */,
 				B54114F31A04FF3000A91BAD /* LaunchScreen.xib in Resources */,
+				B5E05D1B1A66B0B500A3C7DE /* Login.storyboard in Resources */,
 				B51A4F6C1A52A0FC00BECBC9 /* Main.storyboard in Resources */,
 				B557AFC41A602DFA000F9A8E /* PTBTextViewCell.xib in Resources */,
 				B557AFC61A602E00000F9A8E /* PTBTextFieldCell.xib in Resources */,
@@ -400,7 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5BB6D531A0537610060FEB7 /* LoginController.swift in Sources */,
+				B5BB6D531A0537610060FEB7 /* PTBLoginController.swift in Sources */,
 				B557AFE31A603074000F9A8E /* PTBDetailController.swift in Sources */,
 				B557AFC91A602E12000F9A8E /* StringExtenstion.swift in Sources */,
 				B557AFCB1A602E17000F9A8E /* PTBError.swift in Sources */,
@@ -410,7 +422,7 @@
 				B58E93441A504B0C00E2DEDD /* PropertyDetailController.swift in Sources */,
 				B5FCAAF71A366B4C0033D08E /* TenantDetailController.swift in Sources */,
 				B54114E91A04FF3000A91BAD /* AppDelegate.swift in Sources */,
-				B579BEC41A2D246800F8B4C1 /* SignUpController.swift in Sources */,
+				B579BEC41A2D246800F8B4C1 /* PTBSignupController.swift in Sources */,
 				B5B5650E1A23BA4D00A44BC8 /* TenantsController.swift in Sources */,
 				B557AFC31A602DFA000F9A8E /* PTBTextViewCell.swift in Sources */,
 				B557AFC71A602E06000F9A8E /* PTBSwitchCell.swift in Sources */,

@@ -35,8 +35,6 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.splitViewController?.delegate = self
-        
         self.tableView.delegate = self
         
         // Add an add action
@@ -51,8 +49,26 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
             self.refreshControl?.addTarget(self, action: updateItemsSelector, forControlEvents: UIControlEvents.ValueChanged)
         }
         
+        // Add a log out action
+        let logOutSelector: Selector = Selector("logOut")
+        if self.respondsToSelector(logOutSelector) {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Wyloguj", style: UIBarButtonItemStyle.Plain, target: self, action: logOutSelector)
+        }
+        
         // Preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
+        
+        // Register notifications
+        let userDidLogInSelector: Selector = Selector("userDidLogIn:")
+        if self.respondsToSelector(userDidLogInSelector) {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: userDidLogInSelector, name: PTBUserDidLogInNotification, object: nil)
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if PFUser.currentUser() == nil {
+            self.presentLoginScreen()
+        }
     }
     
 // MARK: - TableView data source
@@ -96,7 +112,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     
 // MARK: Update data
     func updateItems() {
-        if (self.itemClassName != nil) {
+        if (PFUser.currentUser() != nil) {
             var query = PFQuery(className: self.itemClassName)
             query.whereKey("userId", equalTo: PFUser.currentUser())
             query.findObjectsInBackgroundWithBlock {
@@ -120,24 +136,26 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     }
     
     func addItem() {
+        if (PFUser.currentUser() != nil) {
         
-        // Create an item
-        var newItem = PFObject(className: self.itemClassName)
-        newItem["userId"] = PFUser.currentUser()
-        newItem[self.itemTitleColumnName] = "Nowy"
-        
-        // Add the item
-        self.items.insert(newItem, atIndex: self.items.count)
-        newItem.saveEventually()
+            // Create an item
+            var newItem = PFObject(className: self.itemClassName)
+            newItem["userId"] = PFUser.currentUser()
+            newItem[self.itemTitleColumnName] = "Nowy"
+            
+            // Add the item
+            self.items.insert(newItem, atIndex: self.items.count)
+            newItem.saveEventually()
 
-        // Insert new row
-        self.tableView.beginUpdates()
-        let rowPath = NSIndexPath(forRow: self.items.count - 1, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([rowPath!], withRowAnimation: .Automatic)
-        self.tableView.endUpdates()
-        
-        self.selectItemAtIndexPath(rowPath)
-        self.detailController.setEditing(true, animated: true)
+            // Insert new row
+            self.tableView.beginUpdates()
+            let rowPath = NSIndexPath(forRow: self.items.count - 1, inSection: 0)
+            self.tableView.insertRowsAtIndexPaths([rowPath!], withRowAnimation: .Automatic)
+            self.tableView.endUpdates()
+            
+            self.selectItemAtIndexPath(rowPath)
+            self.detailController.setEditing(true, animated: true)
+        }
     }
     
     func removeItem(#indexPath: NSIndexPath) {
@@ -163,8 +181,6 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: .None, animated: false)
         self.performSegueWithIdentifier("ShowDetailView", sender: self)
     }
-    
-// MARK: SplitView delegate
 
 // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -180,5 +196,33 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         }
     }
     
-// MARK: Private methods
+// MARK: Login/Logout
+    func presentLoginScreen(animated: Bool = true) {
+        var storyboard = UIStoryboard(name: "Login", bundle: NSBundle.mainBundle())
+        var PTBLoginController = storyboard.instantiateInitialViewController() as UIViewController
+        self.presentViewController(PTBLoginController, animated: animated, completion: nil)
+    }
+    
+    func logOut() {
+        
+        // Ask to confirm
+        var alert = UIAlertController(title: "Potwierdzenie", message: "Chcesz się wylogować?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Tak", style: UIAlertActionStyle.Default,
+            handler: { (UIAlertAction action) -> Void in
+                PFUser.logOut()
+                
+                // Clear data
+                self.items = []
+                
+                // Go to Log In screen
+                self.presentLoginScreen()
+            }
+            ))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func userDidLogIn(notification: NSNotification) {
+        self.updateItems()
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  SignUpController.swift
+//  PTBSignupController.swift
 //  Landlord
 //
 //  Created by Przemyslaw Blasiak on 01.12.2014.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SignUpController: UIViewController, UITextFieldDelegate {
+class PTBSignupController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatPasswordField: UITextField!
@@ -77,7 +77,7 @@ class SignUpController: UIViewController, UITextFieldDelegate {
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Log in
-                    let presentingController: LogInController = self.presentingViewController as LogInController
+                    let presentingController: PTBLoginController = self.presentingViewController as PTBLoginController
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in
                         presentingController.logInWithUsername(newUser.username, password: newUser.password)
                     })
