@@ -9,7 +9,7 @@
 import Foundation
 
 /// The error domain for PTBKit errors.
-let PTBErrorDomain: String = "com.bprzemyslaw.PTB.ErrorDomain"
+let PTBErrorDomain: String = "com.bprzemyslaw.PTBKit.ErrorDomain"
 
 /// NSError codes inv the PTBKit error domain.
 enum PTBErrorCode: Int {
