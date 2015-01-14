@@ -21,6 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("C4rbjhuWyKxoV8qyyT3Xt1KD1fq9E9BuWtQz3Fsa", clientKey: "vKVZVLijNzVqcBFPgCjbLSLpmUiS5opIYh0ntiTQ")
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
         
+        // TODO: TEMPORARY COLOR
+        application.statusBarStyle = .LightContent
+        UIBarButtonItem.appearance().tintColor = UIColor(red: 253/255, green: 166/255, blue: 13/255, alpha: 1)
+        UINavigationBar.appearance().barTintColor = UIColor(red: 20/255, green: 25/255, blue: 35/255, alpha: 1)
+        UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
+        UITabBar.appearance().tintColor = UIColor(red: 253/255, green: 166/255, blue: 13/255, alpha: 1)
+        UITabBar.appearance().barTintColor = UIColor(red: 20/255, green: 25/255, blue: 35/255, alpha: 1)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.whiteColor()], forState: .Normal)
+        
         return true;
     }
 

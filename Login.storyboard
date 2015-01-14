@@ -99,6 +99,9 @@
                         <outlet property="logInButton" destination="AU0-UK-oAr" id="ZX6-k7-l2N"/>
                         <outlet property="passwordField" destination="5XH-Rp-YXC" id="Waq-qo-NSX"/>
                         <outlet property="usernameField" destination="h2g-WY-hYB" id="Swt-cX-cYB"/>
+                        <outletCollection property="interactiveUIElements" destination="AU0-UK-oAr" collectionClass="NSMutableArray" id="WVR-YK-BFX"/>
+                        <outletCollection property="informativeUIElements" destination="iUD-aW-OOU" collectionClass="NSMutableArray" id="08F-gV-cbE"/>
+                        <outletCollection property="interactiveUIElements" destination="1gC-Y9-Fia" collectionClass="NSMutableArray" id="AnA-wm-6hU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOo-Et-nPo" sceneMemberID="firstResponder"/>

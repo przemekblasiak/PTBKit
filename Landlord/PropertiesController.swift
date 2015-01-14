@@ -7,26 +7,13 @@
 //
 
 import UIKit
-import Parse
 
 class PropertiesController: PTBMasterController, UISplitViewControllerDelegate {
-    
-// MARK: Properties
-    var propertyTypes = [PFObject]()
     
 // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.populate(className: "Property", columnName: "streetAddress")
-
-        // Set property types
-        let typesQuery = PFQuery(className: "PropertyType")
-        typesQuery.findObjectsInBackgroundWithBlock {
-            (propertyTypes: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                self.propertyTypes = propertyTypes as [PFObject]
-            }
-        }
+        self.loadObjects(className: "Property", titleColumnName: "streetAddress")
     }
 }

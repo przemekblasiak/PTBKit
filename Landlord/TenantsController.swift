@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class TenantsController: PTBMasterController {
     
@@ -15,6 +14,6 @@ class TenantsController: PTBMasterController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.populate(className: "Tenant", columnName: "name") //TODO: Lepsza nazwa funkcji
+        self.loadObjects(className: "Tenant", titleColumnName: "name")
     }
 }

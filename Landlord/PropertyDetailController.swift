@@ -13,8 +13,8 @@ class PropertyDetailController: PTBDetailController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.addCell(style: .TextField, sectionName: "Adres", cellName:"Ulica", columnName: "streetAddress")
-        self.addCell(style: .TextField, sectionName: "Adres", cellName:"Miasto", columnName: "city")
-        self.addCell(style: .TextView, sectionName: "Notatka", cellName:"Treść", columnName: "note")
+        self.appendCell(name: "Ulica", style: .TextField, forColumnName: "streetAddress", toSection: "Adres")
+        self.appendCell(name: "Miasto", style: .TextField, forColumnName: "city", toSection: "Adres")
+        self.appendCell(name: "Treść", style: .TextView, forColumnName: "note", toSection: "Notatka")
     }
 }

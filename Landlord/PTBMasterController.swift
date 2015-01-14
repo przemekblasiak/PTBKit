@@ -20,16 +20,16 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     }
     
 // MARK: Public methods
-    func populate(#className: String, columnName: String) {
-        self.itemClassName = className
-        self.itemTitleColumnName = columnName
-        self.updateItems()
+    func loadObjects(#className: String, titleColumnName: String) {
+        self.objectClassName = className
+        self.objectTitleColumnName = titleColumnName
+        self.updateObjects()
     }
     
 // MARK: Private properties
-    var itemClassName: String?
-    var itemTitleColumnName: String?
-    var items = [PFObject]()
+    var objectClassName: String?
+    var objectTitleColumnName: String?
+    var objects = [PFObject]()
 
 // MARK: Lifecycle
     override func viewDidLoad() {
@@ -38,15 +38,15 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         self.tableView.delegate = self
         
         // Add an add action
-        let addItemSelector: Selector = Selector("addItem")
-        if self.respondsToSelector(addItemSelector) {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: addItemSelector)
+        let addSelector: Selector = Selector("addObject")
+        if self.respondsToSelector(addSelector) {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: addSelector)
         }
         
         // Add a refresh action
-        let updateItemsSelector: Selector = Selector("updateItems")
-        if self.respondsToSelector(updateItemsSelector) {
-            self.refreshControl?.addTarget(self, action: updateItemsSelector, forControlEvents: UIControlEvents.ValueChanged)
+        let updateSelector: Selector = Selector("updateObjects")
+        if self.respondsToSelector(updateSelector) {
+            self.refreshControl?.addTarget(self, action: updateSelector, forControlEvents: UIControlEvents.ValueChanged)
         }
         
         // Add a log out action
@@ -77,21 +77,25 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return self.objects.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cellIdentifier = self.itemClassName! + "Cell"
+        let cellIdentifier = self.objectClassName! + "Cell"
         var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
         if (cell == nil) {
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
         
-        var item: PFObject = self.items[indexPath.row]
-        if (itemTitleColumnName != nil) {
-            cell!.textLabel?.text = (item[itemTitleColumnName] as String)
+        var object: PFObject = self.objects[indexPath.row]
+        if (objectTitleColumnName != nil) {
+            cell!.textLabel?.text = (object[objectTitleColumnName] as String)
         }
+        
+        var bgColorView = UIView()  // TODO: TEMPORARY COLOR
+        bgColorView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 13/255, alpha: 1)  // TODO: TEMPORARY COLOR
+        cell?.selectedBackgroundView = bgColorView  // TODO: TEMPORARY COLOR
         
         return cell!
     }
@@ -101,8 +105,8 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
-            // Delete selected item
-            self.removeItem(indexPath: indexPath)
+            // Delete selected object
+            self.removeObject(indexPath: indexPath)
         }
     }
     
@@ -111,9 +115,9 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     }
     
 // MARK: Update data
-    func updateItems() {
+    func updateObjects() {
         if (PFUser.currentUser() != nil) {
-            var query = PFQuery(className: self.itemClassName)
+            var query = PFQuery(className: self.objectClassName)
             query.whereKey("userId", equalTo: PFUser.currentUser())
             query.findObjectsInBackgroundWithBlock {
                 (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -121,7 +125,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
                 
                 // Succeeded
                 if error == nil {
-                    self.items = objects! as [PFObject]
+                    self.objects = objects! as [PFObject]
                     self.refresh()
                     
                 // Failed
@@ -135,21 +139,21 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         }
     }
     
-    func addItem() {
+    func addObject() {
         if (PFUser.currentUser() != nil) {
         
-            // Create an item
-            var newItem = PFObject(className: self.itemClassName)
-            newItem["userId"] = PFUser.currentUser()
-            newItem[self.itemTitleColumnName] = "Nowy"
+            // Create an object
+            var newObject = PFObject(className: self.objectClassName)
+            newObject["userId"] = PFUser.currentUser()
+            newObject[self.objectTitleColumnName] = "Nowy"
             
-            // Add the item
-            self.items.insert(newItem, atIndex: self.items.count)
-            newItem.saveEventually()
+            // Add the object
+            self.objects.insert(newObject, atIndex: self.objects.count)
+            newObject.saveEventually()
 
             // Insert new row
             self.tableView.beginUpdates()
-            let rowPath = NSIndexPath(forRow: self.items.count - 1, inSection: 0)
+            let rowPath = NSIndexPath(forRow: self.objects.count - 1, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([rowPath!], withRowAnimation: .Automatic)
             self.tableView.endUpdates()
             
@@ -158,13 +162,13 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         }
     }
     
-    func removeItem(#indexPath: NSIndexPath) {
+    func removeObject(#indexPath: NSIndexPath) {
         
         self.performSegueWithIdentifier("ShowDetailView", sender: self) // Present blank detail view
         
-        // Delete the item
+        // Delete the object
         tableView.beginUpdates()
-        self.items.removeAtIndex(indexPath.row).deleteInBackgroundWithBlock(nil)
+        self.objects.removeAtIndex(indexPath.row).deleteInBackgroundWithBlock(nil)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         tableView.endUpdates()
     }
@@ -190,7 +194,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
             if self.tableView.indexPathForSelectedRow() != nil {
                 let detailController: PTBDetailController! = (segue.destinationViewController as UINavigationController).topViewController as? PTBDetailController
                 if detailController != nil {
-                    detailController.item = self.items[self.tableView.indexPathForSelectedRow()!.row]
+                    detailController.object = self.objects[self.tableView.indexPathForSelectedRow()!.row]
                 }
             }
         }
@@ -213,7 +217,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
                 PFUser.logOut()
                 
                 // Clear data
-                self.items = []
+                self.objects = []
                 
                 // Go to Log In screen
                 self.presentLoginScreen()
@@ -223,6 +227,6 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     }
     
     func userDidLogIn(notification: NSNotification) {
-        self.updateItems()
+        self.updateObjects()
     }
 }

@@ -15,7 +15,7 @@ The PTBDetailController class is a UITableViewController subclass responsible fo
 class PTBDetailController: UITableViewController {
     
 // MARK: Properties
-    weak var item: PFObject!
+    weak var object: PFObject!
     var sectionNames = [String]()
     var cellInfos = [[Dictionary<String, AnyObject>]]()
     var shouldSaveChanges = true
@@ -28,7 +28,7 @@ class PTBDetailController: UITableViewController {
         
         self.masterController = (self.splitViewController?.viewControllers[0] as UINavigationController).topViewController as PTBMasterController
         
-        if self.item != nil {
+        if self.object != nil {
             
             // Set grouped style
             self.tableView = UITableView(frame: self.tableView.frame, style: .Grouped)
@@ -81,10 +81,10 @@ class PTBDetailController: UITableViewController {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellInfo["Identifier"] as String, forIndexPath: indexPath) as UITableViewCell
         
         // When no row is selected
-        if self.item != nil { // TODO: WORKAROUND why is the function called at all, when there is no item?
+        if self.object != nil { // TODO: WORKAROUND why is the function called at all, when there is no object?
             if let detailCell = cell as? PTBDetailCell {
                 detailCell.name = cellInfo["CellName"] as String
-                if let value: AnyObject = self.item[cellInfo["ColumnName"] as String] {
+                if let value: AnyObject = self.object[cellInfo["ColumnName"] as String] {
                     detailCell.setValue(value)
                 }
             }
@@ -102,8 +102,8 @@ class PTBDetailController: UITableViewController {
     }
     
 // MARK: Private
-    func addCell(#style: PTBDetailCellStyle, sectionName: String, cellName: String, columnName: String) {
-        if self.item != nil {
+    func appendCell(name cellName: String, style: PTBDetailCellStyle, forColumnName columnName: String, toSection sectionName: String) {
+        if self.object != nil {
             var cellInfo = Dictionary<String, AnyObject>()
             cellInfo["Identifier"] = style.cellIdentifier
             cellInfo["ColumnName"] = columnName
@@ -145,22 +145,22 @@ class PTBDetailController: UITableViewController {
     }
     
     func saveChanges() {
-        if self.item != nil { // TODO: WORKAROUND This check shouldn't be necessary, the whole function should not be called in that case at all. Why is it nil, has it been deleted already?
+        if self.object != nil { // TODO: WORKAROUND This check shouldn't be necessary, the whole function should not be called in that case at all. Why is it nil, has it been deleted already?
             for (var section = 0; section < self.cellInfos.count; ++section) {
                 for (var row = 0; row < self.cellInfos[section].count; ++row) {
                     let cellInfo = self.cellInfos[section][row]
                     let cell: PTBDetailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as PTBDetailCell
-                    self.item[cellInfo["ColumnName"] as String] = cell.getValue()
+                    self.object[cellInfo["ColumnName"] as String] = cell.getValue()
                 }
             }
-            self.item.saveEventually()
+            self.object.saveEventually()
             
             // TODO: WORKAROUND Why can't I simply call reloadRows... in master table
             // Update row title in master
             if self.masterController != nil {
-                if let rowIndex = find(self.masterController.items, self.item) {
+                if let rowIndex = find(self.masterController.objects, self.object) {
                     let cell = self.masterController.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: 0))!
-                    cell.textLabel?.text = self.item[self.masterController.itemTitleColumnName!] as? String
+                    cell.textLabel?.text = self.object[self.masterController.objectTitleColumnName!] as? String
                 }
             }
         }

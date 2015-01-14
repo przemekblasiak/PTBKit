@@ -13,8 +13,8 @@ class TenantDetailController: PTBDetailController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.addCell(style: .TextField, sectionName: "Nazwa", cellName:"Imię i nazwisko", columnName: "name")
-        self.addCell(style: .TextView, sectionName: "Notatka", cellName:"Treść notatki", columnName: "note")
-        self.addCell(style: .Switch, sectionName: "Dodatkowe", cellName:"Media", columnName: "paysForMedia")
+        self.appendCell(name: "Imię i nazwisko", style: .TextField, forColumnName: "name", toSection: "Nazwa")
+        self.appendCell(name: "Treść notatki", style: .TextView, forColumnName: "note", toSection: "Notatka")
+        self.appendCell(name: "Media", style: .Switch, forColumnName: "paysForMedia", toSection: "Dodatkowe")
     }
 }

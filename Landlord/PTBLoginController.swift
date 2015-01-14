@@ -13,12 +13,31 @@ let PTBUserDidLogInNotification = "UserDidLogIn"
 
 class PTBLoginController: UIViewController, UITextFieldDelegate {
     
+    
+    @IBOutlet var interactiveUIElements: [UIButton]!
+    @IBOutlet var informativeUIElements: [UILabel]!
+    
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // TODO: TEMPORARY COLOR
+//        self.view.backgroundColor = UIColor(red: 20/255, green: 25/255, blue: 35/255, alpha: 1)
+//        for element in self.interactiveUIElements {
+//            element.setTitleColor(UIColor(red: 253/255, green: 166/255, blue: 13/255, alpha: 1), forState: .Normal)
+//        }
+//        for element in self.informativeUIElements {
+//            element.textColor = UIColor.whiteColor()
+//        }
+    }
+    
 // MARK: Lifecycle
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.usernameField.becomeFirstResponder()
     }
     
