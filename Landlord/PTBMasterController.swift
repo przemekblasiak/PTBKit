@@ -178,6 +178,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         
         // TODO: Preserve selection
         self.tableView.reloadData()
+        self.performSegueWithIdentifier("ShowDetailView", sender: self)
     }
     
     func selectItemAtIndexPath(path: NSIndexPath) {
