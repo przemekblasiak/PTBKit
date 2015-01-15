@@ -12,8 +12,30 @@ import Parse
 /**
 The PTBDetailController class is a UITableViewController subclass responsible for displaying values of each column of a specified Parse object.
 */
-class PTBDetailController: UITableViewController {
-    
+public class PTBDetailController: UITableViewController {
+
+// MARK: Public
+    /**
+    Appends a cell with the given name and style to the specified section in the table. Provided column name determines which column should be used as a data source for the cell.
+    */
+    func appendCell(name cellName: String, style: PTBDetailCellStyle, forColumnName columnName: String, toSection sectionName: String) {
+        if self.object != nil {
+            var cellInfo = Dictionary<String, AnyObject>()
+            cellInfo["Identifier"] = style.cellIdentifier
+            cellInfo["ColumnName"] = columnName
+            cellInfo["CellName"] = cellName
+            
+            // Find section number
+            var sectionNumber: Int! = find(self.sectionNames, sectionName)
+            if sectionNumber == nil { // It is a new section
+                self.sectionNames.append(sectionName)
+                self.cellInfos.append([cellInfo])
+            } else {
+                self.cellInfos[sectionNumber].append(cellInfo)
+            }
+        }
+    }
+
 // MARK: Properties
     weak var object: PFObject!
     var sectionNames = [String]()
@@ -23,7 +45,7 @@ class PTBDetailController: UITableViewController {
     var masterController: PTBMasterController! // TODO: WORKAROUND Computed property
     
 // MARK: Lifecycle
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         self.masterController = (self.splitViewController?.viewControllers[0] as UINavigationController).topViewController as PTBMasterController
@@ -57,26 +79,26 @@ class PTBDetailController: UITableViewController {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override public func viewWillDisappear(animated: Bool) {
         if self.tableView.editing && self.shouldSaveChanges {
             self.saveChanges()
         }
     }
 
 // MARK: TableView data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sectionNames[section]
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cellInfos[section].count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellInfo = self.cellInfos[indexPath.section][indexPath.row]
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellInfo["Identifier"] as String, forIndexPath: indexPath) as UITableViewCell
         
@@ -93,35 +115,16 @@ class PTBDetailController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    override public func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return .None
     }
     
-    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override public func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
     
-// MARK: Private
-    func appendCell(name cellName: String, style: PTBDetailCellStyle, forColumnName columnName: String, toSection sectionName: String) {
-        if self.object != nil {
-            var cellInfo = Dictionary<String, AnyObject>()
-            cellInfo["Identifier"] = style.cellIdentifier
-            cellInfo["ColumnName"] = columnName
-            cellInfo["CellName"] = cellName
-            
-            // Find section number
-            var sectionNumber: Int! = find(self.sectionNames, sectionName)
-            if sectionNumber == nil { // It is a new section
-                self.sectionNames.append(sectionName)
-                self.cellInfos.append([cellInfo])
-            } else {
-                self.cellInfos[sectionNumber].append(cellInfo)
-            }
-        }
-    }
-    
 // MARK: Editing
-    override func setEditing(editing: Bool, animated: Bool) {
+    override public func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: true)
         
         if !editing {

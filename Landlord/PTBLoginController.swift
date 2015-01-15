@@ -14,8 +14,8 @@ let PTBUserDidLogInNotification = "UserDidLogIn"
 class PTBLoginController: UIViewController, UITextFieldDelegate {
     
     
-    @IBOutlet var interactiveUIElements: [UIButton]!
-    @IBOutlet var informativeUIElements: [UILabel]!
+    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var labels: [UILabel]!
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -24,14 +24,14 @@ class PTBLoginController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: TEMPORARY COLOR
-//        self.view.backgroundColor = UIColor(red: 20/255, green: 25/255, blue: 35/255, alpha: 1)
-//        for element in self.interactiveUIElements {
-//            element.setTitleColor(UIColor(red: 253/255, green: 166/255, blue: 13/255, alpha: 1), forState: .Normal)
-//        }
-//        for element in self.informativeUIElements {
-//            element.textColor = UIColor.whiteColor()
-//        }
+        // Color UI
+        let colorPalette = PTBSettings.sharedInstance.colorPalette
+        for element in self.buttons {
+            element.setTitleColor(colorPalette["Interactive"], forState: .Normal)
+        }
+        for element in self.labels {
+            element.textColor = colorPalette["Informative"]
+        }
     }
     
 // MARK: Lifecycle

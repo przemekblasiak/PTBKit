@@ -10,11 +10,27 @@ import UIKit
 import Parse
 
 class PTBSignupController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var labels: [UILabel]!
+    
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatPasswordField: UITextField!
     
 // MARK: Lifecycle
+    override func viewDidLoad() {
+        
+        // Color UI
+        let colorPalette = PTBSettings.sharedInstance.colorPalette
+        for element in self.buttons {
+            element.setTitleColor(colorPalette["Interactive"], forState: .Normal)
+        }
+        for element in self.labels {
+            element.textColor = colorPalette["Informative"]
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         
         // Focus on username field

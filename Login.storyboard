@@ -16,6 +16,20 @@
                         <rect key="frame" x="0.0" y="64" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-ab-gfe">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1kR-ed-T94">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logowanie" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUD-aW-OOU">
+                                <rect key="frame" x="470" y="28" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hasło" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5XH-Rp-YXC">
                                 <rect key="frame" x="412" y="300" width="200" height="30"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -43,7 +57,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hOB-5t-Xpg" kind="presentation" modalPresentationStyle="fullScreen" id="JrG-12-wAu"/>
+                                    <segue destination="hOB-5t-Xpg" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="JrG-12-wAu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AU0-UK-oAr">
@@ -82,26 +96,21 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logowanie" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUD-aW-OOU">
-                                <rect key="frame" x="470" y="20" width="84" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="8tQ-tz-jFc"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="logInButton" destination="AU0-UK-oAr" id="ZX6-k7-l2N"/>
                         <outlet property="passwordField" destination="5XH-Rp-YXC" id="Waq-qo-NSX"/>
                         <outlet property="usernameField" destination="h2g-WY-hYB" id="Swt-cX-cYB"/>
-                        <outletCollection property="interactiveUIElements" destination="AU0-UK-oAr" collectionClass="NSMutableArray" id="WVR-YK-BFX"/>
-                        <outletCollection property="informativeUIElements" destination="iUD-aW-OOU" collectionClass="NSMutableArray" id="08F-gV-cbE"/>
-                        <outletCollection property="interactiveUIElements" destination="1gC-Y9-Fia" collectionClass="NSMutableArray" id="AnA-wm-6hU"/>
+                        <outletCollection property="buttons" destination="AU0-UK-oAr" collectionClass="NSMutableArray" id="Ma3-rx-fni"/>
+                        <outletCollection property="buttons" destination="1gC-Y9-Fia" collectionClass="NSMutableArray" id="gzj-uX-1zF"/>
+                        <outletCollection property="labels" destination="iUD-aW-OOU" collectionClass="NSMutableArray" id="h12-B3-dfi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOo-Et-nPo" sceneMemberID="firstResponder"/>
@@ -120,6 +129,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fH5-Cf-QDh">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RCV-H0-ZeS">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zvZ-KR-pbL">
                                 <rect key="frame" x="0.0" y="416" width="1024" height="352"/>
                                 <subviews>
@@ -190,7 +207,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tworzenie konta" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qI-G0-X7l">
-                                <rect key="frame" x="450" y="20" width="125" height="21"/>
+                                <rect key="frame" x="450" y="28" width="125" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -206,12 +223,15 @@
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="Usu-d4-lDX" id="ASG-Kr-DjX"/>
                         <outlet property="repeatPasswordField" destination="PGH-5J-3h6" id="Mac-A2-5gt"/>
                         <outlet property="usernameField" destination="Rh2-FZ-g2B" id="ZH0-bd-EVF"/>
+                        <outletCollection property="buttons" destination="Qq6-Pb-E97" collectionClass="NSMutableArray" id="e0L-VD-pR5"/>
+                        <outletCollection property="buttons" destination="c8t-km-gxX" collectionClass="NSMutableArray" id="R3Z-bb-jAp"/>
+                        <outletCollection property="labels" destination="1qI-G0-X7l" collectionClass="NSMutableArray" id="JFk-RS-P8K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bP9-NC-GP5" userLabel="First Responder" sceneMemberID="firstResponder"/>

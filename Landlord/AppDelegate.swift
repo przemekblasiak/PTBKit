@@ -16,19 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        application.statusBarStyle = .LightContent
         
         // Setup Parse
         Parse.setApplicationId("C4rbjhuWyKxoV8qyyT3Xt1KD1fq9E9BuWtQz3Fsa", clientKey: "vKVZVLijNzVqcBFPgCjbLSLpmUiS5opIYh0ntiTQ")
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
-        
-        // TODO: TEMPORARY COLOR
-        application.statusBarStyle = .LightContent
-        UIBarButtonItem.appearance().tintColor = UIColor(red: 253/255, green: 166/255, blue: 13/255, alpha: 1)
-        UINavigationBar.appearance().barTintColor = UIColor(red: 20/255, green: 25/255, blue: 35/255, alpha: 1)
-        UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
-        UITabBar.appearance().tintColor = UIColor(red: 253/255, green: 166/255, blue: 13/255, alpha: 1)
-        UITabBar.appearance().barTintColor = UIColor(red: 20/255, green: 25/255, blue: 35/255, alpha: 1)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.whiteColor()], forState: .Normal)
+
+        // Setup PTBKit
+        var darkBlue = UIColor(red: 26/255, green: 34/255, blue: 47/255, alpha: 1)
+        var goldYellow = UIColor(red: 255/255, green: 181/255, blue: 6/255, alpha: 1)
+        PTBSettings.sharedInstance.setColorPalette(interactiveColor: goldYellow, informativeColor: UIColor.whiteColor(), backgroundColor: darkBlue)
         
         return true;
     }
@@ -53,9 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Called when the application is about to terminate.
     func applicationWillTerminate(application: UIApplication) {
-        PFUser.logOut()
     }
-
 
 }
 

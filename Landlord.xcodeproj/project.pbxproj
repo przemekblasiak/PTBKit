@@ -42,6 +42,7 @@
 		B5B5650E1A23BA4D00A44BC8 /* TenantsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5650D1A23BA4D00A44BC8 /* TenantsController.swift */; };
 		B5BB6D531A0537610060FEB7 /* PTBLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6D521A0537610060FEB7 /* PTBLoginController.swift */; };
 		B5E05D1B1A66B0B500A3C7DE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5E05D1A1A66B0B500A3C7DE /* Login.storyboard */; };
+		B5E69A061A67426400BD93CF /* PTBSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E69A051A67426400BD93CF /* PTBSettings.swift */; };
 		B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F995B41A06B72700E019EE /* PropertiesController.swift */; };
 		B5FCAAF71A366B4C0033D08E /* TenantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAAF61A366B4C0033D08E /* TenantDetailController.swift */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		B5BD04601A49899000D3C1E4 /* PTBSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBSwitchCell.swift; sourceTree = "<group>"; };
 		B5BD04621A4989AD00D3C1E4 /* PTBSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBSwitchCell.xib; sourceTree = "<group>"; };
 		B5E05D1A1A66B0B500A3C7DE /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		B5E69A051A67426400BD93CF /* PTBSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBSettings.swift; sourceTree = "<group>"; };
 		B5F42F4C1A3E654C00C2A052 /* PTBTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTBTextFieldCell.swift; sourceTree = "<group>"; };
 		B5F42F4D1A3E654C00C2A052 /* PTBTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBTextFieldCell.xib; sourceTree = "<group>"; };
 		B5F995B41A06B72700E019EE /* PropertiesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesController.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				B5E05D1C1A66ECC800A3C7DE /* Login */,
 				B508EB801A0C4B2C009075CC /* Extensions */,
 				B54D54C71A2CF06C007930A6 /* PTBError.swift */,
+				B5E69A051A67426400BD93CF /* PTBSettings.swift */,
 			);
 			name = PTBKit;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				B557AFE31A603074000F9A8E /* PTBDetailController.swift in Sources */,
 				B557AFC91A602E12000F9A8E /* StringExtenstion.swift in Sources */,
 				B557AFCB1A602E17000F9A8E /* PTBError.swift in Sources */,
+				B5E69A061A67426400BD93CF /* PTBSettings.swift in Sources */,
 				B5F995B51A06B72700E019EE /* PropertiesController.swift in Sources */,
 				B557AFC11A602DEC000F9A8E /* PTBMasterController.swift in Sources */,
 				B557AFC51A602E00000F9A8E /* PTBTextFieldCell.swift in Sources */,

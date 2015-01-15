@@ -12,27 +12,29 @@ import Parse
 /**
 The PTBMasterController class is a UITableViewController subclass responsible for displaying each object of a given Parse class as a row.
 */
-class PTBMasterController: UITableViewController, UISplitViewControllerDelegate {
-
-// MARK: Public properties
-    var detailController: PTBDetailController! { // Read-only computed property
-        return (self.splitViewController?.viewControllers[1] as UINavigationController).topViewController as PTBDetailController
-    }
+public class PTBMasterController: UITableViewController, UISplitViewControllerDelegate {
     
-// MARK: Public methods
-    func loadObjects(#className: String, titleColumnName: String) {
+// MARK: Public
+    /**
+    Loads objects of the specified Parse class to serve as a data source for the table. Each of the objects is represented by a cell with a title provided by the specified title column.
+    */
+    public func loadObjects(#className: String, titleColumnName: String) {
         self.objectClassName = className
         self.objectTitleColumnName = titleColumnName
         self.updateObjects()
     }
     
-// MARK: Private properties
+// MARK: Properties
+    var detailController: PTBDetailController! { // Read-only computed property
+        return (self.splitViewController?.viewControllers[1] as UINavigationController).topViewController as PTBDetailController
+    }
+    
     var objectClassName: String?
     var objectTitleColumnName: String?
     var objects = [PFObject]()
 
 // MARK: Lifecycle
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.delegate = self
@@ -65,22 +67,22 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override public func viewDidAppear(animated: Bool) {
         if PFUser.currentUser() == nil {
             self.presentLoginScreen()
         }
     }
     
-// MARK: - TableView data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+// MARK: TableView data source
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.objects.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = self.objectClassName! + "Cell"
         var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
@@ -93,16 +95,18 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
             cell!.textLabel?.text = (object[objectTitleColumnName] as String)
         }
         
-        var bgColorView = UIView()  // TODO: TEMPORARY COLOR
-        bgColorView.backgroundColor = UIColor(red: 253/255, green: 166/255, blue: 13/255, alpha: 1)  // TODO: TEMPORARY COLOR
-        cell?.selectedBackgroundView = bgColorView  // TODO: TEMPORARY COLOR
+        // TODO: Is it the right place for it?
+        // Color the cell
+        var backgroundView = UIView()
+        backgroundView.backgroundColor = PTBSettings.sharedInstance.colorPalette["Interactive"]
+        cell?.selectedBackgroundView = backgroundView
         
         return cell!
     }
     
 // MARK: TableView delegate
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
             // Delete selected object
@@ -110,11 +114,11 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
     
-// MARK: Update data
+// MARK: Updating
     func updateObjects() {
         if (PFUser.currentUser() != nil) {
             var query = PFQuery(className: self.objectClassName)
@@ -188,7 +192,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
     }
 
 // MARK: Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ShowDetailView") {
             
             // Pass data to detail controller if any row is selected
@@ -204,8 +208,9 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
 // MARK: Login/Logout
     func presentLoginScreen(animated: Bool = true) {
         var storyboard = UIStoryboard(name: "Login", bundle: NSBundle.mainBundle())
-        var PTBLoginController = storyboard.instantiateInitialViewController() as UIViewController
-        self.presentViewController(PTBLoginController, animated: animated, completion: nil)
+        var loginController = storyboard.instantiateInitialViewController() as UIViewController
+        loginController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        self.presentViewController(loginController, animated: animated, completion: nil)
     }
     
     func logOut() {
@@ -219,6 +224,7 @@ class PTBMasterController: UITableViewController, UISplitViewControllerDelegate 
                 
                 // Clear data
                 self.objects = []
+                self.refresh()
                 
                 // Go to Log In screen
                 self.presentLoginScreen()
