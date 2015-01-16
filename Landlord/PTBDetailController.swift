@@ -148,7 +148,9 @@ public class PTBDetailController: UITableViewController {
     }
     
     func saveChanges() {
-        if self.object != nil { // TODO: WORKAROUND This check shouldn't be necessary, the whole function should not be called in that case at all. Why is it nil, has it been deleted already?
+        if self.object != nil {
+            
+            // Apply and save changes
             for (var section = 0; section < self.cellInfos.count; ++section) {
                 for (var row = 0; row < self.cellInfos[section].count; ++row) {
                     let cellInfo = self.cellInfos[section][row]
@@ -158,7 +160,6 @@ public class PTBDetailController: UITableViewController {
             }
             self.object.saveEventually()
             
-            // TODO: WORKAROUND Why can't I simply call reloadRows... in master table
             // Update row title in master
             if self.masterController != nil {
                 if let rowIndex = find(self.masterController.objects, self.object) {

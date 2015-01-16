@@ -98,7 +98,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
         // TODO: Is it the right place for it?
         // Color the cell
         var backgroundView = UIView()
-        backgroundView.backgroundColor = PTBSettings.sharedInstance.colorPalette["Interactive"]
+        backgroundView.backgroundColor = PTBSettings.sharedInstance.colorPalette[PTBInteractiveColorKey]
         cell?.selectedBackgroundView = backgroundView
         
         return cell!
@@ -121,6 +121,8 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
 // MARK: Updating
     func updateObjects() {
         if (PFUser.currentUser() != nil) {
+            
+            // Retrieve objects from Parse
             var query = PFQuery(className: self.objectClassName)
             query.whereKey("userId", equalTo: PFUser.currentUser())
             query.findObjectsInBackgroundWithBlock {
@@ -146,7 +148,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
     func addObject() {
         if (PFUser.currentUser() != nil) {
         
-            // Create an object
+            // Create a Parse object
             var newObject = PFObject(className: self.objectClassName)
             newObject["userId"] = PFUser.currentUser()
             newObject[self.objectTitleColumnName] = "Nowy"
@@ -161,13 +163,13 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
             self.tableView.insertRowsAtIndexPaths([rowPath!], withRowAnimation: .Automatic)
             self.tableView.endUpdates()
             
+            // Select the row and switch to editing mode
             self.selectItemAtIndexPath(rowPath)
             self.detailController.setEditing(true, animated: true)
         }
     }
     
     func removeObject(#indexPath: NSIndexPath) {
-        
         self.performSegueWithIdentifier("ShowDetailView", sender: self) // Present blank detail view
         
         // Delete the object

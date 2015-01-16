@@ -13,7 +13,6 @@ let PTBUserDidLogInNotification = "UserDidLogIn"
 
 class PTBLoginController: UIViewController, UITextFieldDelegate {
     
-    
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var labels: [UILabel]!
     
@@ -27,10 +26,10 @@ class PTBLoginController: UIViewController, UITextFieldDelegate {
         // Color UI
         let colorPalette = PTBSettings.sharedInstance.colorPalette
         for element in self.buttons {
-            element.setTitleColor(colorPalette["Interactive"], forState: .Normal)
+            element.setTitleColor(colorPalette[PTBInteractiveColorKey], forState: .Normal)
         }
         for element in self.labels {
-            element.textColor = colorPalette["Informative"]
+            element.textColor = colorPalette[PTBInformativeColorKey]
         }
     }
     
@@ -63,33 +62,31 @@ class PTBLoginController: UIViewController, UITextFieldDelegate {
 // MARK: Log in
     func logInWithUsername(username: String, password: String) {
         
-        // Present Progress Alert //TODO: Change to real progress bar
+        // Present Progress Alert
         var progressAlert = UIAlertController(title: "Logowanie...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         
-        // Try to log in
+        // Log in
         PFUser.logInWithUsernameInBackground(username, password:password) {
             (user: PFUser!, error: NSError!) -> Void in
-            
-            if user != nil {
                 
-                // Dismiss Progress Alert
-                progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
+            // Dismiss Progress Alert
+            progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
+                
+                // Succeeded
+                if error == nil {
                     
                     // Segue to next screen
                     self.performLogin()
-                })
-            } else {
-                
-                // Dismiss Progress Alert
-                progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                // Failed
+                } else {
                     
                     // Show failure
                     var alert = UIAlertController(type: .Error, error: error)
                     self.presentViewController(alert, animated: true, completion: nil)
-
-                })
-            }
+                }
+            })
         }
     }
     

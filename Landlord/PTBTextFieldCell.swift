@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Represents a cell with a text field that can be used in PTBDetailController's table view.
 class PTBTextFieldCell: UITableViewCell, PTBDetailCell {
     
     var columnName: String!
@@ -17,7 +18,6 @@ class PTBTextFieldCell: UITableViewCell, PTBDetailCell {
         }
     }
     
-// MARK: Outlets
     @IBOutlet weak var textField: UITextField!
     
     func setValue(value: AnyObject) {

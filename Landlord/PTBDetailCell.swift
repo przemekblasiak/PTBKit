@@ -8,8 +8,9 @@
 
 import UIKit
 
+// MARK: Public
 /// The style of the table view cell.
-enum PTBDetailCellStyle {
+public enum PTBDetailCellStyle {
     case TextView, TextField, Switch
     var cellIdentifier: String {
         switch self {

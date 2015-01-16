@@ -8,7 +8,7 @@
 //
 
 /**
-The file contains an extension of the UIAlertController class
+The file contains an extension of the UIAlertController class.
 */
 
 import Foundation
@@ -56,8 +56,6 @@ extension UIAlertController {
                 codeDescription = String(error.localizedDescription)
             }
         default:
-            
-            // For my domain and other
             codeDescription = String(error.localizedDescription)
         }
         

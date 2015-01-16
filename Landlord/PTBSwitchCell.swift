@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Represents a cell with a switch that can be used in PTBDetailController's table view.
 class PTBSwitchCell: UITableViewCell, PTBDetailCell {
 
     var columnName: String!
@@ -17,7 +18,6 @@ class PTBSwitchCell: UITableViewCell, PTBDetailCell {
         }
     }
     
-    // MARK: Outlets
     @IBOutlet weak var yesNoSwitch: UISwitch!
     @IBOutlet weak var switchTitleLabel: UILabel!
     

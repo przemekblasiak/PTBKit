@@ -8,12 +8,12 @@
 
 import UIKit
 
+/// Represents a cell with a text view that can be used in PTBDetailController's table view.
 class PTBTextViewCell: UITableViewCell, PTBDetailCell {
     
     var columnName: String!
     var name: String!
     
-// MARK: Outlets
     @IBOutlet weak var textView: UITextView!
     
     func setValue(value: AnyObject) {

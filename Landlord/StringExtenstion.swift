@@ -7,7 +7,7 @@
 //
 
 /**
-The file contains an extension of the String class
+The file contains an extension of the String class.
 */
 
 import Foundation

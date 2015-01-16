@@ -24,10 +24,10 @@ class PTBSignupController: UIViewController, UITextFieldDelegate {
         // Color UI
         let colorPalette = PTBSettings.sharedInstance.colorPalette
         for element in self.buttons {
-            element.setTitleColor(colorPalette["Interactive"], forState: .Normal)
+            element.setTitleColor(colorPalette[PTBInteractiveColorKey], forState: .Normal)
         }
         for element in self.labels {
-            element.textColor = colorPalette["Informative"]
+            element.textColor = colorPalette[PTBInformativeColorKey]
         }
     }
     
@@ -84,7 +84,7 @@ class PTBSignupController: UIViewController, UITextFieldDelegate {
         var progressAlert = UIAlertController(title: "Tworzenie konta...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         
-        // Try to sign up
+        // Sign up
         newUser.signUpInBackgroundWithBlock {
             (succeeded: Bool!, error: NSError!) -> Void in
             if error == nil {
