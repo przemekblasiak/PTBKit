@@ -13,11 +13,8 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vMN-Jr-fU8" id="bSW-Hm-W74">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Single-line text." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWA-Me-2AS">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Single-line text." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWA-Me-2AS">
                         <rect key="frame" x="8" y="12" width="630" height="20.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20.5" id="Wgk-Bq-8nH"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -25,16 +22,17 @@
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xir-da-A6M">
                         <rect key="frame" x="646" y="6" width="51" height="31"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="31" id="PDu-wq-BXl"/>
+                            <constraint firstAttribute="height" constant="31" id="tcu-EH-Cbq"/>
                         </constraints>
                     </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Xir-da-A6M" firstAttribute="trailing" secondItem="bSW-Hm-W74" secondAttribute="trailingMargin" id="2Mv-xQ-3wB"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Xir-da-A6M" secondAttribute="bottom" constant="-1.5" id="8Xy-c4-air"/>
-                    <constraint firstItem="Xir-da-A6M" firstAttribute="top" secondItem="bSW-Hm-W74" secondAttribute="topMargin" constant="-2" id="Pc7-Yn-hU2"/>
-                    <constraint firstItem="Xir-da-A6M" firstAttribute="leading" secondItem="oWA-Me-2AS" secondAttribute="trailing" constant="8" id="R5H-Bv-7Tx"/>
-                    <constraint firstItem="oWA-Me-2AS" firstAttribute="leading" secondItem="bSW-Hm-W74" secondAttribute="leadingMargin" id="uqH-dU-m9w"/>
+                    <constraint firstItem="Xir-da-A6M" firstAttribute="leading" secondItem="oWA-Me-2AS" secondAttribute="trailing" constant="8" id="AqM-8L-JmI"/>
+                    <constraint firstItem="Xir-da-A6M" firstAttribute="top" secondItem="bSW-Hm-W74" secondAttribute="topMargin" constant="-2" id="DCL-S2-DDG"/>
+                    <constraint firstItem="oWA-Me-2AS" firstAttribute="top" secondItem="bSW-Hm-W74" secondAttribute="topMargin" constant="4" id="NlP-LG-OxI"/>
+                    <constraint firstItem="Xir-da-A6M" firstAttribute="trailing" secondItem="bSW-Hm-W74" secondAttribute="trailingMargin" id="Tzd-wj-MU8"/>
+                    <constraint firstItem="Xir-da-A6M" firstAttribute="leading" secondItem="bSW-Hm-W74" secondAttribute="leadingMargin" constant="638" id="db5-9H-hJg"/>
+                    <constraint firstItem="oWA-Me-2AS" firstAttribute="leading" secondItem="bSW-Hm-W74" secondAttribute="leadingMargin" id="n9m-MM-2bO"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

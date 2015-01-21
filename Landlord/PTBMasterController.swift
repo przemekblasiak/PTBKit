@@ -228,7 +228,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
                 self.objects = []
                 self.refresh()
                 
-                // Go to Log In screen
+                // Go to Login screen
                 self.presentLoginScreen()
             }
             ))

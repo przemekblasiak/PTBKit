@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("C4rbjhuWyKxoV8qyyT3Xt1KD1fq9E9BuWtQz3Fsa", clientKey: "vKVZVLijNzVqcBFPgCjbLSLpmUiS5opIYh0ntiTQ")
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
 
-        // Setup PTBKit
+        // Setup PTBKit // TODO: Kolory powinny być czytane z pliku config
         var darkBlue = UIColor(red: 26/255, green: 34/255, blue: 47/255, alpha: 1)
         var goldYellow = UIColor(red: 255/255, green: 181/255, blue: 6/255, alpha: 1)
         PTBSettings.sharedInstance.setColorPalette(interactiveColor: goldYellow, informativeColor: UIColor.whiteColor(), backgroundColor: darkBlue)

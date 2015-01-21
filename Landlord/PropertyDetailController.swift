@@ -16,5 +16,6 @@ class PropertyDetailController: PTBDetailController {
         self.appendCell(name: "Ulica", style: .TextField, forColumnName: "streetAddress", toSection: "Adres")
         self.appendCell(name: "Miasto", style: .TextField, forColumnName: "city", toSection: "Adres")
         self.appendCell(name: "Treść", style: .TextView, forColumnName: "note", toSection: "Notatka")
+        self.appendCell(name: "Posiada garaż", style: .Switch, forColumnName: "hasGarage", toSection: "Dodatkowe")
     }
 }

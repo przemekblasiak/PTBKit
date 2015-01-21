@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "house@1x.png"
     },
     {
       "idiom" : "universal",
@@ -11,7 +12,7 @@
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "house.png"
+      "filename" : "house@3x.png"
     }
   ],
   "info" : {

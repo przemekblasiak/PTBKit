@@ -41,9 +41,8 @@ extension UIAlertController {
     convenience init(type: UIAlertControllerType, error: NSError) {
         var codeDescription: String?
         
+        // Provide error description, based on the domain
         switch error.domain {
-            
-        // Provide descriptions for Parse error codes
         case "Parse":
             switch error.code {
             case 100:
@@ -59,6 +58,7 @@ extension UIAlertController {
             codeDescription = String(error.localizedDescription)
         }
         
+        // Create an error alert with the description
         self.init(type: .Error, message: codeDescription)
     }
 }

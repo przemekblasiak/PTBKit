@@ -244,8 +244,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="House" width="42" height="42"/>
-        <image name="Tenants" width="42" height="42"/>
+        <image name="House" width="48" height="48"/>
+        <image name="Tenants" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5LW-Ku-vbh"/>
