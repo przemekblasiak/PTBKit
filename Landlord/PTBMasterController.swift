@@ -26,7 +26,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
     
 // MARK: Properties
     var detailController: PTBDetailController! { // Read-only computed property
-        return (self.splitViewController?.viewControllers[1] as UINavigationController).topViewController as PTBDetailController
+        return (self.splitViewController?.viewControllers[1] as! UINavigationController).topViewController as! PTBDetailController
     }
     
     var objectClassName: String?
@@ -92,10 +92,9 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
         
         var object: PFObject = self.objects[indexPath.row]
         if (objectTitleColumnName != nil) {
-            cell!.textLabel?.text = (object[objectTitleColumnName] as String)
+            cell!.textLabel?.text = (object[objectTitleColumnName] as! String)
         }
         
-        // TODO: Is it the right place for it?
         // Color the cell
         var backgroundView = UIView()
         backgroundView.backgroundColor = PTBSettings.sharedInstance.colorPalette[PTBInteractiveColorKey]
@@ -131,7 +130,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
                 
                 // Succeeded
                 if error == nil {
-                    self.objects = objects! as [PFObject]
+                    self.objects = objects! as! [PFObject]
                     self.refresh()
                     
                 // Failed
@@ -181,8 +180,6 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
     
 // MARK: Table interaction
     func refresh() {
-        
-        // TODO: Preserve selection
         self.tableView.reloadData()
         self.performSegueWithIdentifier("ShowDetailView", sender: self)
     }
@@ -199,7 +196,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
             
             // Pass data to detail controller if any row is selected
             if self.tableView.indexPathForSelectedRow() != nil {
-                let detailController: PTBDetailController! = (segue.destinationViewController as UINavigationController).topViewController as? PTBDetailController
+                let detailController: PTBDetailController! = (segue.destinationViewController as! UINavigationController).topViewController as? PTBDetailController
                 if detailController != nil {
                     detailController.object = self.objects[self.tableView.indexPathForSelectedRow()!.row]
                 }
@@ -210,7 +207,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
 // MARK: Login/Logout
     func presentLoginScreen(animated: Bool = true) {
         var storyboard = UIStoryboard(name: "Login", bundle: NSBundle.mainBundle())
-        var loginController = storyboard.instantiateInitialViewController() as UIViewController
+        var loginController = storyboard.instantiateInitialViewController() as! UIViewController
         loginController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         self.presentViewController(loginController, animated: animated, completion: nil)
     }

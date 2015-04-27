@@ -123,6 +123,4 @@ class PTBLoginController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-    
-// MARK: Ungrouped
 }

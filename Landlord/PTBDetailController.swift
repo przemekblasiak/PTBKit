@@ -42,13 +42,13 @@ public class PTBDetailController: UITableViewController {
     var cellInfos = [[Dictionary<String, AnyObject>]]()
     var shouldSaveChanges = true
     var cancelButton: UIBarButtonItem!
-    var masterController: PTBMasterController! // TODO: WORKAROUND Computed property
+    var masterController: PTBMasterController!
     
 // MARK: Lifecycle
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        self.masterController = (self.splitViewController?.viewControllers[0] as UINavigationController).topViewController as PTBMasterController
+        self.masterController = (self.splitViewController?.viewControllers[0] as! UINavigationController).topViewController as! PTBMasterController
         
         if self.object != nil {
             
@@ -100,13 +100,13 @@ public class PTBDetailController: UITableViewController {
 
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellInfo = self.cellInfos[indexPath.section][indexPath.row]
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellInfo["Identifier"] as String, forIndexPath: indexPath) as UITableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellInfo["Identifier"] as! String, forIndexPath: indexPath) as! UITableViewCell
         
         // When no row is selected
-        if self.object != nil { // TODO: WORKAROUND why is the function called at all, when there is no object?
+        if self.object != nil {
             if let detailCell = cell as? PTBDetailCell {
-                detailCell.name = cellInfo["CellName"] as String
-                if let value: AnyObject = self.object[cellInfo["ColumnName"] as String] {
+                detailCell.name = cellInfo["CellName"] as! String
+                if let value: AnyObject = self.object[cellInfo["ColumnName"] as! String] {
                     detailCell.setValue(value)
                 }
             }
@@ -154,8 +154,8 @@ public class PTBDetailController: UITableViewController {
             for (var section = 0; section < self.cellInfos.count; ++section) {
                 for (var row = 0; row < self.cellInfos[section].count; ++row) {
                     let cellInfo = self.cellInfos[section][row]
-                    let cell: PTBDetailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as PTBDetailCell
-                    self.object[cellInfo["ColumnName"] as String] = cell.getValue()
+                    let cell: PTBDetailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! PTBDetailCell
+                    self.object[cellInfo["ColumnName"] as! String] = cell.getValue()
                 }
             }
             self.object.saveEventually()

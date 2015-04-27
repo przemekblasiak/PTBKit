@@ -17,7 +17,7 @@ class PTBTextViewCell: UITableViewCell, PTBDetailCell {
     @IBOutlet weak var textView: UITextView!
     
     func setValue(value: AnyObject) {
-        self.textView.text = value as NSString
+        self.textView.text = value as! NSString as String
     }
     
     func getValue() -> AnyObject {

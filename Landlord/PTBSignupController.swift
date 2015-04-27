@@ -86,14 +86,14 @@ class PTBSignupController: UIViewController, UITextFieldDelegate {
         
         // Sign up
         newUser.signUpInBackgroundWithBlock {
-            (succeeded: Bool!, error: NSError!) -> Void in
+            (succeeded: Bool, error: NSError!) -> Void in
             if error == nil {
                 
                 // Dismiss Progress Alert
                 progressAlert.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     // Log in
-                    let presentingController: PTBLoginController = self.presentingViewController as PTBLoginController
+                    let presentingController: PTBLoginController = self.presentingViewController as! PTBLoginController
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in
                         presentingController.logInWithUsername(newUser.username, password: newUser.password)
                     })

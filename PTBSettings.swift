@@ -39,7 +39,7 @@ public class PTBSettings: NSObject {
 
         // Navigation bar
         UINavigationBar.appearance().barTintColor = backgroundColor
-        UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: informativeColor, forKey: NSForegroundColorAttributeName)
+        UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: informativeColor, forKey: NSForegroundColorAttributeName) as [NSObject : AnyObject]
         
         // Tab bar
         UITabBar.appearance().barTintColor = backgroundColor

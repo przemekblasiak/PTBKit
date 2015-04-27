@@ -22,7 +22,7 @@ class PTBSwitchCell: UITableViewCell, PTBDetailCell {
     @IBOutlet weak var switchTitleLabel: UILabel!
     
     func setValue(value: AnyObject) {
-        self.yesNoSwitch.on = value as Bool
+        self.yesNoSwitch.on = value as! Bool
     }
     
     func getValue() -> AnyObject {

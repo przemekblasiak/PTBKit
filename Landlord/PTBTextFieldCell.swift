@@ -21,7 +21,7 @@ class PTBTextFieldCell: UITableViewCell, PTBDetailCell {
     @IBOutlet weak var textField: UITextField!
     
     func setValue(value: AnyObject) {
-        self.textField.text = value as String
+        self.textField.text = value as! String
     }
     
     func getValue() -> AnyObject {

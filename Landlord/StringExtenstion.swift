@@ -18,7 +18,7 @@ extension String {
         if self.isEmpty {
             if errorPointer != nil {
                 let userInfo: NSDictionary = [NSLocalizedDescriptionKey: PTBErrorCode.BlankUsernameError.description]
-                errorPointer?.memory = NSError(domain: PTBErrorDomain, code: PTBErrorCode.BlankUsernameError.rawValue, userInfo: userInfo)
+                errorPointer?.memory = NSError(domain: PTBErrorDomain, code: PTBErrorCode.BlankUsernameError.rawValue, userInfo: userInfo as [NSObject : AnyObject])
             }
             return false
         }
@@ -29,7 +29,7 @@ extension String {
         if self.isEmpty {
             if errorPointer != nil {
                 let userInfo: NSDictionary = [NSLocalizedDescriptionKey: PTBErrorCode.BlankPasswordError.description]
-                errorPointer?.memory = NSError(domain: PTBErrorDomain, code: PTBErrorCode.BlankPasswordError.rawValue, userInfo: userInfo)
+                errorPointer?.memory = NSError(domain: PTBErrorDomain, code: PTBErrorCode.BlankPasswordError.rawValue, userInfo: userInfo as [NSObject : AnyObject])
             }
             return false
         }
