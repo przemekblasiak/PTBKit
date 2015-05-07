@@ -54,7 +54,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
         // Add a log out action
         let logOutSelector: Selector = Selector("logOut")
         if self.respondsToSelector(logOutSelector) {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Wyloguj", style: UIBarButtonItemStyle.Plain, target: self, action: logOutSelector)
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItemStyle.Plain, target: self, action: logOutSelector)
         }
         
         // Preserve selection between presentations
@@ -150,7 +150,7 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
             // Create a Parse object
             var newObject = PFObject(className: self.objectClassName)
             newObject["userId"] = PFUser.currentUser()
-            newObject[self.objectTitleColumnName] = "Nowy"
+            newObject[self.objectTitleColumnName] = "New"
             
             // Add the object
             self.objects.insert(newObject, atIndex: self.objects.count)
@@ -215,9 +215,9 @@ public class PTBMasterController: UITableViewController, UISplitViewControllerDe
     func logOut() {
         
         // Ask to confirm
-        var alert = UIAlertController(title: "Potwierdzenie", message: "Chcesz się wylogować?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Anuluj", style: UIAlertActionStyle.Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Tak", style: UIAlertActionStyle.Default,
+        var alert = UIAlertController(title: "Confirm", message: "Do you want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default,
             handler: { (UIAlertAction action) -> Void in
                 PFUser.logOut()
                 

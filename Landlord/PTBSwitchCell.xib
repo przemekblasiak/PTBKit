@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -31,7 +31,6 @@
                     <constraint firstItem="Xir-da-A6M" firstAttribute="top" secondItem="bSW-Hm-W74" secondAttribute="topMargin" constant="-2" id="DCL-S2-DDG"/>
                     <constraint firstItem="oWA-Me-2AS" firstAttribute="top" secondItem="bSW-Hm-W74" secondAttribute="topMargin" constant="4" id="NlP-LG-OxI"/>
                     <constraint firstItem="Xir-da-A6M" firstAttribute="trailing" secondItem="bSW-Hm-W74" secondAttribute="trailingMargin" id="Tzd-wj-MU8"/>
-                    <constraint firstItem="Xir-da-A6M" firstAttribute="leading" secondItem="bSW-Hm-W74" secondAttribute="leadingMargin" constant="638" id="db5-9H-hJg"/>
                     <constraint firstItem="oWA-Me-2AS" firstAttribute="leading" secondItem="bSW-Hm-W74" secondAttribute="leadingMargin" id="n9m-MM-2bO"/>
                 </constraints>
             </tableViewCellContentView>

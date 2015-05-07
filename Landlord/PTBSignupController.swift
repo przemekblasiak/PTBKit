@@ -60,7 +60,7 @@ class PTBSignupController: UIViewController, UITextFieldDelegate {
             if (password == repeatPassword) {
                 self.signUpWithUsername(username, password: password)
             } else {
-                var alert = UIAlertController(type: .Error, message: "Hasło nie jest zgodne z jego powtórzeniem")
+                var alert = UIAlertController(type: .Error, message: "Passwords don't match")
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         } else {
@@ -81,7 +81,7 @@ class PTBSignupController: UIViewController, UITextFieldDelegate {
         newUser.password = password
         
         // Present Progress Alert
-        var progressAlert = UIAlertController(title: "Tworzenie konta...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        var progressAlert = UIAlertController(title: "Creating an account...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         
         // Sign up

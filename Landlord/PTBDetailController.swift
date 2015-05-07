@@ -71,9 +71,9 @@ public class PTBDetailController: UITableViewController {
             
             // Enable editting
             self.navigationItem.rightBarButtonItem = self.editButtonItem()
-            self.cancelButton = UIBarButtonItem(title: "Anuluj", style: .Plain, target: self, action: "cancelPressed:")
+            self.cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelPressed:")
             
-            self.title = "Szczegóły"
+            self.title = "Details"
         } else {
             self.tableView.hidden = true
         }

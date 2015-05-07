@@ -23,9 +23,9 @@ enum PTBErrorCode: Int {
     var description: String {
         switch self {
         case .BlankUsernameError:
-            return "Brakuje nazwy użytkownika."
+            return "Provide username"
         case .BlankPasswordError:
-            return "Brakuje hasła."
+            return "Provide password"
         }
     }
 }

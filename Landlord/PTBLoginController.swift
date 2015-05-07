@@ -63,7 +63,7 @@ class PTBLoginController: UIViewController, UITextFieldDelegate {
     func logInWithUsername(username: String, password: String) {
         
         // Present Progress Alert
-        var progressAlert = UIAlertController(title: "Logowanie...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        var progressAlert = UIAlertController(title: "Logging in...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         self.presentViewController(progressAlert, animated: true, completion: nil)
         
         // Log in

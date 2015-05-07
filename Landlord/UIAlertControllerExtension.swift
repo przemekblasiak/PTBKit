@@ -22,9 +22,9 @@ extension UIAlertController {
         var title: String {
             switch self {
             case Error:
-                return "Ups"
+                return "Oops"
             case Confirm:
-                return "Potwierdzenie"
+                return "Confirm"
             }
         }
     }
@@ -46,11 +46,11 @@ extension UIAlertController {
         case "Parse":
             switch error.code {
             case 100:
-                codeDescription = "Brakuje połączenia z internetem."
+                codeDescription = "There is no internet connection"
             case 101:
-                codeDescription = "Podana nazwa użytkownika lub hasło są niepoprawne"
+                codeDescription = "Incorrect username or password"
             case 202:
-                codeDescription = "Podana nazwa użytkownika jest już zajęta."
+                codeDescription = "The username is already taken"
             default:
                 codeDescription = String(error.localizedDescription)
             }

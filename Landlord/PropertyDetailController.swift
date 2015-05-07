@@ -13,9 +13,9 @@ class PropertyDetailController: PTBDetailController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.appendCell(name: "Ulica", style: .TextField, forColumnName: "streetAddress", toSection: "Adres")
-        self.appendCell(name: "Miasto", style: .TextField, forColumnName: "city", toSection: "Adres")
-        self.appendCell(name: "Treść", style: .TextView, forColumnName: "note", toSection: "Notatka")
-        self.appendCell(name: "Posiada garaż", style: .Switch, forColumnName: "hasGarage", toSection: "Dodatkowe")
+        self.appendCell(name: "Street", style: .TextField, forColumnName: "streetAddress", toSection: "Address")
+        self.appendCell(name: "City", style: .TextField, forColumnName: "city", toSection: "Address")
+        self.appendCell(name: "Content", style: .TextView, forColumnName: "note", toSection: "Note")
+        self.appendCell(name: "Has a garage", style: .Switch, forColumnName: "hasGarage", toSection: "Additional")
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RIY-k2-JNb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RIY-k2-JNb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -40,7 +40,7 @@
             </objects>
             <point key="canvasLocation" x="6034.5" y="3200"/>
         </scene>
-        <!--Nieruchomości-->
+        <!--Real Estate-->
         <scene sceneID="dh9-wu-MoQ">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ArY-Ym-GmZ" customClass="PropertiesController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
@@ -54,7 +54,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Tq-Qu-p8d" id="GgU-yJ-wds">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Adres nieruchomości" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5M2-Pg-hak">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Real Estate address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5M2-Pg-hak">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -73,7 +73,7 @@
                             <outlet property="delegate" destination="ArY-Ym-GmZ" id="bXv-2S-PHG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Nieruchomości" id="ebv-wD-U2S"/>
+                    <navigationItem key="navigationItem" title="Real Estate" id="ebv-wD-U2S"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="DQe-Z9-JrK">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
@@ -117,7 +117,7 @@
             </objects>
             <point key="canvasLocation" x="6034.5" y="1354"/>
         </scene>
-        <!--Najemcy-->
+        <!--Tenants-->
         <scene sceneID="jHf-Nb-tlz">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="vc3-Wg-Gw7" customClass="TenantsController" customModule="Landlord" customModuleProvider="target" sceneMemberID="viewController">
@@ -131,7 +131,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sLp-z4-GdE" id="yp2-uj-3j1">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Nazwa najemcy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dTz-06-R8i">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tenant's name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dTz-06-R8i">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -151,7 +151,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Najemcy" id="hjs-dn-nc2"/>
+                    <navigationItem key="navigationItem" title="Tenants" id="hjs-dn-nc2"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="h7M-es-xPb">
                         <autoresizingMask key="autoresizingMask"/>
@@ -177,11 +177,11 @@
             </objects>
             <point key="canvasLocation" x="5042" y="472"/>
         </scene>
-        <!--Najemcy-->
+        <!--Tenants-->
         <scene sceneID="32p-IV-E6c">
             <objects>
                 <splitViewController id="oHv-7A-Emf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Najemcy" image="Tenants" id="geE-pe-itT"/>
+                    <tabBarItem key="tabBarItem" title="Tenants" image="Tenants" id="geE-pe-itT"/>
                     <connections>
                         <segue destination="hb0-nr-VXR" kind="relationship" relationship="masterViewController" id="Jaa-UN-arK"/>
                         <segue destination="LFh-Ld-Cwk" kind="relationship" relationship="detailViewController" id="5LW-Ku-vbh"/>
@@ -207,11 +207,11 @@
             </objects>
             <point key="canvasLocation" x="5012" y="2332"/>
         </scene>
-        <!--Nieruchomości-->
+        <!--Real Estate-->
         <scene sceneID="OKo-ii-gCi">
             <objects>
                 <splitViewController id="g8O-X3-OSG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nieruchomości" image="House" id="YVb-2K-JxM"/>
+                    <tabBarItem key="tabBarItem" title="Real Estate" image="House" id="YVb-2K-JxM"/>
                     <connections>
                         <segue destination="D0v-qJ-j6M" kind="relationship" relationship="masterViewController" id="A80-t8-i1a"/>
                         <segue destination="ABd-hy-0mM" kind="relationship" relationship="detailViewController" id="U6a-z1-dm4"/>
@@ -248,7 +248,7 @@
         <image name="Tenants" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5LW-Ku-vbh"/>
         <segue reference="U6a-z1-dm4"/>
+        <segue reference="5LW-Ku-vbh"/>
     </inferredMetricsTieBreakers>
 </document>
